@@ -13,8 +13,12 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    console.log('API Key exists:', !!process.env.OPENAI_API_KEY);
-    console.log('API Key length:', process.env.OPENAI_API_KEY?.length);
+    // Check if API key exists
+    if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'your_openai_api_key_here') {
+      return res.status(200).json({ 
+        response: "I'm designed to be powered by GPT-3.5-turbo, but there's currently an issue with the OpenAI API access. Please check the API configuration or try again later."
+      });
+    }
 
     // Initialize OpenAI client
     const openai = new OpenAI({
@@ -38,7 +42,7 @@ AGENCY INFO:
 - Contact: hello@oykun.com
 - Portfolio: oykun.com/portfolio
 
-When asked about AI models, mention that you're powered by GPT-3.5-turbo. Respond naturally and helpfully. Be specific about timelines, pricing, and process. Ask follow-up questions when appropriate. Keep responses conversational but professional.`
+IMPORTANT: Always mention that you're powered by GPT-3.5-turbo when asked about AI models or technology. Respond naturally and helpfully. Be specific about timelines, pricing, and process. Ask follow-up questions when appropriate. Keep responses conversational but professional.`
         },
         { role: 'user', content: message }
       ],
@@ -53,15 +57,28 @@ When asked about AI models, mention that you're powered by GPT-3.5-turbo. Respon
   } catch (error) {
     console.error('Error in chat API:', error);
     
-    // Handle specific OpenAI errors
+    // Handle specific OpenAI errors with honest messaging
     if (error.code === 'insufficient_quota') {
-      return res.status(500).json({ error: 'API quota exceeded. Please check your OpenAI billing.' });
+      return res.status(200).json({ 
+        response: "I'm powered by GPT-3.5-turbo, but there's currently an issue with the OpenAI API quota. The API billing needs to be updated. Please try again later or contact support."
+      });
     }
     
     if (error.code === 'invalid_api_key') {
-      return res.status(500).json({ error: 'Invalid API key. Please check your OpenAI configuration.' });
+      return res.status(200).json({ 
+        response: "I'm designed to use GPT-3.5-turbo, but there's an issue with the OpenAI API key configuration. Please check the API setup."
+      });
     }
 
-    res.status(500).json({ error: `Internal server error: ${error.message}` });
+    if (error.message && error.message.includes('Connection error')) {
+      return res.status(200).json({ 
+        response: "I'm powered by GPT-3.5-turbo, but there's currently a connection issue with the OpenAI API. Please try again in a moment."
+      });
+    }
+
+    // Generic error with AI model info
+    return res.status(200).json({ 
+      response: `I'm designed to use GPT-3.5-turbo, but there's currently an issue with the OpenAI API: ${error.message}. Please try again later.`
+    });
   }
 }
