@@ -24,10 +24,11 @@ function addTypingMessage(fullText) {
     
     messageDiv.appendChild(contentDiv);
     chatContainer.appendChild(messageDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
     
-    // Type out the message token by token
+    // Type out the message letter by letter
     let currentIndex = 0;
-    const typingSpeed = 25; // milliseconds per character (slightly faster)
+    const typingSpeed = 20; // milliseconds per character (faster)
     
     function typeNextCharacter() {
         if (currentIndex < fullText.length) {
@@ -37,11 +38,14 @@ function addTypingMessage(fullText) {
             setTimeout(typeNextCharacter, typingSpeed);
         } else {
             // Remove typing cursor when done
-            contentDiv.classList.remove('typing');
+            setTimeout(() => {
+                contentDiv.classList.remove('typing');
+            }, 500); // Keep cursor for a moment at the end
         }
     }
     
-    typeNextCharacter();
+    // Start typing immediately
+    setTimeout(typeNextCharacter, 50); // Small delay to ensure DOM is ready
 }
 
 function showTyping() {
@@ -96,6 +100,7 @@ async function sendMessage() {
         hideTyping();
 
         if (response.ok) {
+            // Start typing animation immediately
             addTypingMessage(data.response);
         } else {
             showError(data.error || 'Sorry, something went wrong. Please try again.');
