@@ -134,6 +134,43 @@
             border-radius: 5px;
             margin: 10px 20px;
         }
+        
+        .sample-questions {
+            margin: 15px 20px;
+            padding: 15px 0;
+        }
+        
+        .sample-questions-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            margin-left: 0;
+        }
+        
+        .sample-question-btn {
+            display: block;
+            width: 100%;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #495057;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        
+        .sample-question-btn:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+            color: #007bff;
+        }
+        
+        .sample-question-btn:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -148,6 +185,16 @@
                 <div class="message-content">
                     Hello! I'm here to help you learn about our design agency. What would you like to know?
                 </div>
+            </div>
+            
+            <div class="sample-questions">
+                <p class="sample-questions-label">Try asking:</p>
+                <button class="sample-question-btn" onclick="sendSampleQuestion('Do you have any availability for a new project?')">
+                    Do you have any availability for a new project?
+                </button>
+                <button class="sample-question-btn" onclick="sendSampleQuestion('Tell me about your team')">
+                    Tell me about your team
+                </button>
             </div>
         </div>
         
@@ -243,6 +290,18 @@
             sendButton.disabled = false;
             sendButton.textContent = 'Send';
             messageInput.focus();
+        }
+
+        function sendSampleQuestion(question) {
+            // Hide the sample questions after one is clicked
+            const sampleQuestions = document.querySelector('.sample-questions');
+            if (sampleQuestions) {
+                sampleQuestions.style.display = 'none';
+            }
+            
+            // Set the input value and send the message
+            messageInput.value = question;
+            sendMessage();
         }
 
         // Event listeners
