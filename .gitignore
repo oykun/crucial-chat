@@ -1,0 +1,16 @@
+# Environment variables
+.env.local
+
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
