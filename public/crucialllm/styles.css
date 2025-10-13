@@ -261,16 +261,3 @@ body {
     background: #9ca3af;
 }
 
-/* Typing animation cursor */
-.message-content.typing::after {
-    content: '|';
-    animation: blink 1s infinite;
-    color: #3b82f6;
-    font-weight: bold;
-    margin-left: 1px;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}

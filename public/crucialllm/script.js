@@ -100,8 +100,7 @@ async function sendMessage() {
         hideTyping();
 
         if (response.ok) {
-            // Start typing animation immediately
-            addTypingMessage(data.response);
+            addMessage(data.response);
         } else {
             showError(data.error || 'Sorry, something went wrong. Please try again.');
         }
