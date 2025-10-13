@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crucialllm - AI Design Assistant</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="health-indicator" id="healthIndicator">
+                <div class="status-dot checking" id="statusDot"></div>
+                <span id="statusText">Checking...</span>
+            </div>
+            <h1>crucialllm</h1>
+            <p>AI Design Partner for Creative Founders</p>
+        </div>
+        
+        <div class="chat-container" id="chatContainer">
+            <div class="message bot">
+                <div class="message-content">
+                    Hello! I'm here to help you learn about our design agency. What would you like to know?
+                </div>
+            </div>
+            
+            <div class="sample-questions">
+                <p class="sample-questions-label">Try asking:</p>
+                <button class="sample-question-btn" onclick="sendSampleQuestion('Do you have any availability for a new project?')">
+                    Do you have any availability for a new project?
+                </button>
+                <button class="sample-question-btn" onclick="sendSampleQuestion('Tell me about your team')">
+                    Tell me about your team
+                </button>
+            </div>
+        </div>
+        
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Ask about our services..." autocomplete="off">
+            <button id="sendButton">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

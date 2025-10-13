@@ -54,7 +54,7 @@ async function sendMessage() {
     showTyping();
 
     try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('../api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ async function checkHealth() {
     const statusText = document.getElementById('statusText');
     
     try {
-        const response = await fetch('/api/health');
+        const response = await fetch('../api/health');
         const data = await response.json();
         
         if (data.status === 'healthy') {

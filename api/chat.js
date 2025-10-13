@@ -25,7 +25,7 @@ module.exports = async function handler(req, res) {
     // Read agency information from markdown file
     let agencyInfo = '';
     try {
-      const agencyInfoPath = path.join(process.cwd(), 'public', 'agency-info.md');
+          const agencyInfoPath = path.join(process.cwd(), 'public', 'crucialllm', 'agency-info.md');
       agencyInfo = fs.readFileSync(agencyInfoPath, 'utf8');
     } catch (error) {
       console.error('Error reading agency info:', error);
