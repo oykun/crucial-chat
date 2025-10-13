@@ -8,12 +8,29 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  try {
-    const { message } = req.body;
+      try {
+        const { message } = req.body;
 
-    if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
-    }
+        if (!message) {
+          return res.status(400).json({ error: 'Message is required' });
+        }
+
+        // Log the question for review
+        console.log('User Question:', message);
+        
+        // Save question to file for analysis
+        const logEntry = {
+          timestamp: new Date().toISOString(),
+          question: message,
+          userAgent: req.headers['user-agent'] || 'unknown'
+        };
+        
+        try {
+          const logPath = path.join(process.cwd(), 'user-questions.log');
+          fs.appendFileSync(logPath, JSON.stringify(logEntry) + '\n');
+        } catch (error) {
+          console.error('Error logging question:', error);
+        }
 
     // Check if API key exists
     if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'your_openai_api_key_here') {
