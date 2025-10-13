@@ -14,6 +14,12 @@ module.exports = async function handler(req, res) {
     }
 
     // Check if API key exists
+    console.log('Environment check:', {
+      hasKey: !!process.env.OPENAI_API_KEY,
+      keyLength: process.env.OPENAI_API_KEY?.length,
+      keyStart: process.env.OPENAI_API_KEY?.substring(0, 10)
+    });
+    
     if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'your_openai_api_key_here') {
       return res.status(200).json({ 
         response: "I'm designed to be powered by GPT-3.5-turbo, but there's currently an issue with the OpenAI API access. Please check the API configuration or try again later."
