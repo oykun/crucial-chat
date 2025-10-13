@@ -16,10 +16,24 @@ module.exports = async function handler(req, res) {
 
     // Smart responses based on keywords in the question
     if (lowerMessage.includes('availability') || lowerMessage.includes('available') || lowerMessage.includes('time') || lowerMessage.includes('schedule')) {
-      response = `Yes, we currently have availability for new projects! We typically have a 2-3 week lead time for most design projects. Our team can accommodate both small quick-turnaround projects and larger comprehensive branding initiatives. Would you like to schedule a consultation to discuss your timeline?`;
+      response = `Great question! We currently have availability for new projects starting in late October. Our typical timeline is:
+      
+• Brand identity projects: 2-3 weeks
+• Website design: 3-4 weeks  
+• Complete rebrand: 6-8 weeks
+
+We're booking consultations for next week. Would you like to schedule a 30-minute discovery call to discuss your project timeline and requirements?`;
     }
     else if (lowerMessage.includes('team') || lowerMessage.includes('who') || lowerMessage.includes('people') || lowerMessage.includes('staff')) {
-      response = `Our team consists of experienced designers, developers, and strategists with over 10 years of combined experience. We specialize in brand identity, web design, user experience, and marketing materials. Each team member brings unique expertise to ensure your project gets the attention and quality it deserves.`;
+      response = `Meet our core team:
+
+🎨 **Oykun (Creative Director)** - 8+ years in brand strategy and visual identity. Previously worked with startups and Fortune 500 companies.
+
+💻 **Lead Developer** - Full-stack specialist with expertise in modern web technologies and performance optimization.
+
+📱 **UX/UI Designer** - User-centered design expert who ensures every interaction feels intuitive and delightful.
+
+We're a tight-knit team of 4 designers and developers who collaborate closely on every project. No outsourcing, no junior designers - just experienced professionals who care about quality.`;
     }
     else if (lowerMessage.includes('services') || lowerMessage.includes('what do you') || lowerMessage.includes('offer')) {
       response = `We offer comprehensive design services including: Brand identity and logo design, Website design and development, User experience (UX) design, Print design and marketing materials, Social media graphics, and Business stationery. We work with businesses of all sizes to create memorable brand experiences.`;
