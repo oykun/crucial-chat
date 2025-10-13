@@ -1,3 +1,9 @@
+const { OpenAI } = require('openai');
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
 module.exports = async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -11,10 +17,44 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    const lowerMessage = message.toLowerCase();
     let response = '';
 
-    // Smart responses based on keywords in the question
+    // Try real AI first if API key is available
+    if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your_openai_api_key_here') {
+      try {
+        const completion = await openai.chat.completions.create({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: `You are Oykun, the Creative Director of a design agency. You're friendly, professional, and knowledgeable about design. Here's information about your agency:
+
+AGENCY INFO:
+- Creative Director: Oykun (8+ years experience)
+- Team: 4 experienced designers and developers
+- Specialties: Brand identity, web design, UX/UI, print design
+- Timeline: Brand projects 2-3 weeks, websites 3-4 weeks, rebrands 6-8 weeks
+- Pricing: Starting at $2,500 for small businesses
+- Contact: hello@oykun.com
+- Portfolio: oykun.com/portfolio
+
+Respond naturally and helpfully. Be specific about timelines, pricing, and process. Ask follow-up questions when appropriate. Keep responses conversational but professional.`
+            },
+            { role: 'user', content: message }
+          ],
+          max_tokens: 300,
+          temperature: 0.7,
+        });
+        
+        response = completion.choices[0]?.message?.content || '';
+      } catch (aiError) {
+        console.log('OpenAI failed, using fallback');
+      }
+    }
+
+    // Fallback to keyword matching if AI fails or isn't available
+    if (!response) {
+      const lowerMessage = message.toLowerCase();
     if (lowerMessage.includes('availability') || lowerMessage.includes('available') || lowerMessage.includes('time') || lowerMessage.includes('schedule')) {
       response = `Great question! We currently have availability for new projects starting in late October. Our typical timeline is:
       
@@ -53,8 +93,9 @@ We're a tight-knit team of 4 designers and developers who collaborate closely on
     else if (lowerMessage.includes('experience') || lowerMessage.includes('years') || lowerMessage.includes('background')) {
       response = `Our team has over 10 years of experience in the design industry. We've worked with businesses ranging from local startups to international brands, helping them establish strong visual identities and effective digital presence. Our experience spans multiple industries including technology, healthcare, retail, and professional services.`;
     }
-    else {
-      response = `That's a great question! We're a creative design agency specializing in brand identity, web design, and user experience. Our team has over 10 years of experience helping businesses create memorable brand experiences. Could you tell me more about what specific aspect you'd like to know about? I'm here to help with information about our services, process, availability, or anything else!`;
+      else {
+        response = `That's a great question! We're a creative design agency specializing in brand identity, web design, and user experience. Our team has over 10 years of experience helping businesses create memorable brand experiences. Could you tell me more about what specific aspect you'd like to know about? I'm here to help with information about our services, process, availability, or anything else!`;
+      }
     }
 
     res.status(200).json({ response });
