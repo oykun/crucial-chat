@@ -1,4 +1,6 @@
 const { OpenAI } = require('openai');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = async function handler(req, res) {
   // Only allow POST requests
@@ -20,6 +22,28 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    // Read agency information from markdown file
+    let agencyInfo = '';
+    try {
+      const agencyInfoPath = path.join(process.cwd(), 'public', 'agency-info.md');
+      agencyInfo = fs.readFileSync(agencyInfoPath, 'utf8');
+    } catch (error) {
+      console.error('Error reading agency info:', error);
+      // Fallback to basic info if file can't be read
+      agencyInfo = `You are Oykun, the Creative Director of a design agency. You're friendly, professional, and knowledgeable about design.
+
+AGENCY INFO:
+- Creative Director: Oykun (8+ years experience)
+- Team: 4 experienced designers and developers
+- Specialties: Brand identity, web design, UX/UI, print design
+- Timeline: Brand projects 2-3 weeks, websites 3-4 weeks, rebrands 6-8 weeks
+- Pricing: Starting at $2,500 for small businesses
+- Contact: hello@oykun.com
+- Portfolio: oykun.com/portfolio
+
+IMPORTANT: Always mention that you're powered by GPT-3.5-turbo when asked about AI models or technology. Respond naturally and helpfully. Be specific about timelines, pricing, and process. Ask follow-up questions when appropriate. Keep responses conversational but professional.`;
+    }
+
     // Initialize OpenAI client
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
@@ -31,18 +55,7 @@ module.exports = async function handler(req, res) {
       messages: [
         {
           role: 'system',
-          content: `You are Oykun, the Creative Director of a design agency. You're friendly, professional, and knowledgeable about design. Here's information about your agency:
-
-AGENCY INFO:
-- Creative Director: Oykun (8+ years experience)
-- Team: 4 experienced designers and developers
-- Specialties: Brand identity, web design, UX/UI, print design
-- Timeline: Brand projects 2-3 weeks, websites 3-4 weeks, rebrands 6-8 weeks
-- Pricing: Starting at $2,500 for small businesses
-- Contact: hello@oykun.com
-- Portfolio: oykun.com/portfolio
-
-IMPORTANT: Always mention that you're powered by GPT-3.5-turbo when asked about AI models or technology. Respond naturally and helpfully. Be specific about timelines, pricing, and process. Ask follow-up questions when appropriate. Keep responses conversational but professional.`
+          content: agencyInfo
         },
         { role: 'user', content: message }
       ],
