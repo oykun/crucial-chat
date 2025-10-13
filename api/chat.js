@@ -1,6 +1,4 @@
 import { OpenAI } from 'openai';
-import fs from 'fs';
-import path from 'path';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -19,16 +17,33 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    // Read agency information from the text file
-    const agencyInfoPath = path.join(process.cwd(), 'public', 'agency-info.txt');
-    let agencyInfo = '';
-    
-    try {
-      agencyInfo = fs.readFileSync(agencyInfoPath, 'utf8');
-    } catch (error) {
-      console.error('Error reading agency info:', error);
-      // Continue without agency info if file can't be read
-    }
+    // Agency information - hardcoded for now to fix the file system issue
+    const agencyInfo = `About Our Design Agency
+
+We are a creative design agency specializing in:
+- Brand identity and logo design
+- Web design and development
+- Print design and marketing materials
+- User experience (UX) design
+
+Our team has over 10 years of experience helping businesses create memorable brand experiences that connect with their audience.
+
+We believe in:
+- Clean, modern design principles
+- User-centered design approach
+- Collaborative client relationships
+- Timely project delivery
+
+Services we offer:
+- Brand strategy and positioning
+- Logo and visual identity design
+- Website design and development
+- Social media graphics
+- Business card and stationery design
+- Marketing collateral
+- UI/UX design for digital products
+
+Contact us for a consultation about your next design project!`;
 
     // Create the system prompt with agency information
     const systemPrompt = `You are a helpful AI assistant for a design agency. Here is information about the agency:
