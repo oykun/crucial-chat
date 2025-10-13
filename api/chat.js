@@ -13,9 +13,44 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
+    // Check if API key exists
+    const apiKey = process.env.OPENAI_API_KEY;
+    
+    if (!apiKey || apiKey === 'your_openai_api_key_here') {
+      // Fallback response when no API key
+      const lowerMessage = message.toLowerCase();
+      let response = '';
+      
+      if (lowerMessage.includes('availability') || lowerMessage.includes('available')) {
+        response = `Great question! We currently have availability for new projects starting in late October. Our typical timeline is:
+        
+• Brand identity projects: 2-3 weeks
+• Website design: 3-4 weeks  
+• Complete rebrand: 6-8 weeks
+
+We're booking consultations for next week. Would you like to schedule a 30-minute discovery call?`;
+      } else if (lowerMessage.includes('team')) {
+        response = `Meet our core team:
+
+🎨 **Oykun (Creative Director)** - 8+ years in brand strategy and visual identity. Previously worked with startups and Fortune 500 companies.
+
+💻 **Lead Developer** - Full-stack specialist with expertise in modern web technologies and performance optimization.
+
+📱 **UX/UI Designer** - User-centered design expert who ensures every interaction feels intuitive and delightful.
+
+We're a tight-knit team of 4 designers and developers who collaborate closely on every project.`;
+      } else {
+        response = `That's a great question! We're a creative design agency specializing in brand identity, web design, and user experience. Our team has over 10 years of experience helping businesses create memorable brand experiences. 
+
+Could you tell me more about what specific aspect you'd like to know about? I'm here to help with information about our services, process, availability, or anything else!`;
+      }
+      
+      return res.status(200).json({ response });
+    }
+
     // Initialize OpenAI client
     const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey: apiKey,
     });
 
     // Create AI response
