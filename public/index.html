@@ -38,6 +38,7 @@
             text-align: center;
             flex-shrink: 0;
             border-bottom: 1px solid black;
+            position: relative;
         }
         
         .header h1 {
@@ -52,6 +53,42 @@
             font-size: 16px;
             font-weight: 300;
             color: black;
+        }
+        
+        .health-indicator {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.healthy {
+            background: #00ff00;
+        }
+        
+        .status-dot.unhealthy {
+            background: #ff0000;
+        }
+        
+        .status-dot.checking {
+            background: #ffaa00;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
         
         .chat-container {
@@ -208,6 +245,10 @@
 <body>
     <div class="container">
         <div class="header">
+            <div class="health-indicator" id="healthIndicator">
+                <div class="status-dot checking" id="statusDot"></div>
+                <span id="statusText">Checking...</span>
+            </div>
             <h1>ailab.oykun.com</h1>
             <p>AI Design Partner for Creative Founders</p>
         </div>
@@ -344,6 +385,34 @@
                 sendMessage();
             }
         });
+
+        // Health check function
+        async function checkHealth() {
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+            
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                
+                if (data.status === 'healthy') {
+                    statusDot.className = 'status-dot healthy';
+                    statusText.textContent = 'Service is active. Ask questions!';
+                } else {
+                    statusDot.className = 'status-dot unhealthy';
+                    statusText.textContent = 'Services down. Email me instead';
+                }
+            } catch (error) {
+                statusDot.className = 'status-dot unhealthy';
+                statusText.textContent = 'Services down. Email me instead';
+            }
+        }
+
+        // Check health on page load
+        checkHealth();
+        
+        // Check health every 30 seconds
+        setInterval(checkHealth, 30000);
 
         // Focus input on load
         messageInput.focus();
