@@ -14,8 +14,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            color: black;
+            background: white;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -32,108 +32,105 @@
         }
         
         .header {
-            background: #2c3e50;
-            color: white;
-            padding: 15px 20px;
+            background: white;
+            color: black;
+            padding: 40px 20px 30px;
             text-align: center;
             flex-shrink: 0;
+            border-bottom: 1px solid black;
         }
         
         .header h1 {
-            margin: 0 0 5px 0;
-            font-size: 20px;
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
         }
         
         .header p {
             margin: 0;
-            opacity: 0.9;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 300;
+            color: black;
         }
         
         .chat-container {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
-            background: #fafafa;
+            padding: 40px 20px;
+            background: white;
         }
         
         .message {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            margin-bottom: 30px;
+            max-width: 85%;
         }
         
         .message.user {
-            justify-content: flex-end;
-        }
-        
-        .message-content {
-            max-width: 75%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            word-wrap: break-word;
-            line-height: 1.5;
-        }
-        
-        .message.user .message-content {
-            background: #007bff;
-            color: white;
-            border-bottom-right-radius: 5px;
-            order: 2;
-        }
-        
-        .message.bot .message-content {
-            background: white;
-            color: #333;
-            border-bottom-left-radius: 5px;
-            border: 1px solid #e5e5e5;
-            order: 2;
+            margin-left: auto;
+            text-align: right;
         }
         
         .message.bot {
-            justify-content: flex-start;
+            margin-right: auto;
+        }
+        
+        .message-content {
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: black;
+            font-weight: 400;
         }
         
         .input-container {
-            padding: 15px 20px;
+            padding: 30px 20px;
             display: flex;
-            gap: 10px;
+            gap: 15px;
             background: white;
-            border-top: 1px solid #eee;
+            border-top: 1px solid black;
             flex-shrink: 0;
         }
         
         .input-container input {
             flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 1px solid black;
+            background: transparent;
+            font-size: 16px;
             outline: none;
-            font-size: 14px;
+            color: black;
+            font-weight: 400;
         }
         
-        .input-container input:focus {
-            border-color: #007bff;
+        .input-container input::placeholder {
+            color: #666;
+            font-weight: 300;
         }
         
         .input-container button {
-            padding: 12px 24px;
-            background: #007bff;
+            padding: 15px 30px;
+            background: black;
             color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
+            border: 1px solid black;
             font-size: 14px;
-            transition: background 0.2s;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .input-container button:hover {
-            background: #0056b3;
+            background: white;
+            color: black;
         }
         
         .input-container button:disabled {
             background: #ccc;
+            color: white;
+            border-color: #ccc;
             cursor: not-allowed;
         }
         
@@ -141,65 +138,78 @@
             display: none;
             color: #666;
             font-style: italic;
-            padding: 12px 16px;
+            padding: 0;
+            font-size: 16px;
         }
         
         .error {
-            color: #dc3545;
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            padding: 12px 16px;
-            border-radius: 5px;
-            margin: 10px 20px;
+            color: black;
+            background: white;
+            border: 1px solid black;
+            padding: 15px 0;
+            margin: 20px 0;
+            font-size: 16px;
         }
         
         .sample-questions {
-            margin: 20px 0;
+            margin: 40px 0;
             padding: 0;
         }
         
         .sample-questions-label {
             color: #666;
             font-size: 14px;
-            margin-bottom: 12px;
-            margin-left: 0;
-            font-weight: 500;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .sample-question-btn {
             display: block;
             width: 100%;
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 8px;
+            margin: 15px 0;
+            padding: 0;
+            background: transparent;
+            color: black;
+            border: none;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 14px;
-            color: #333;
+            transition: all 0.2s;
             text-align: left;
-            transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            font-weight: 400;
+            line-height: 1.6;
         }
         
         .sample-question-btn:hover {
-            background: #f8f9fa;
-            border-color: #007bff;
-            color: #007bff;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            text-decoration-color: black;
         }
         
         .sample-question-btn:last-child {
             margin-bottom: 0;
+        }
+        
+        /* Scrollbar styling */
+        .chat-container::-webkit-scrollbar {
+            width: 1px;
+        }
+        
+        .chat-container::-webkit-scrollbar-track {
+            background: white;
+        }
+        
+        .chat-container::-webkit-scrollbar-thumb {
+            background: black;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>AI Design Agency Assistant</h1>
-            <p>Ask me anything about our design services!</p>
+            <h1>ailab.oykun.com</h1>
+            <p>AI Design Partner for Creative Founders</p>
         </div>
         
         <div class="chat-container" id="chatContainer">
