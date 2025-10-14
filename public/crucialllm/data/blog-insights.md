@@ -55,6 +55,51 @@
 - **Psychology-driven decisions** - Every interface choice should be based on how people think
 - **Brave creative choices** - Making bold decisions when others are uncertain
 
+## Actual Blog Content (2023 Articles)
+
+### 2023 Letter with 10 Lessons (December 30, 2023)
+**Key Insights:**
+- **"Articulating my ideas, feelings, experiences, fears, aspirations, creativity, my 'self' with words has made me an even more content, confident person and designer"** - Writing has transformative power
+- **"Reading fewer books deeply is more impactful than rushing through many instead"** - There is this unhinged badge of honour in readers' world for reading the highest number of books in a year
+- **"Don't chase the numbers on social media, seek meaningful connections"** - I didn't grow to the tens of thousands of followers. I didn't care for that, but I built meaningful connections with a few people
+- **"Don't let social media change you"** - If you are not being truly yourself, what it meant for you won't be able to find you
+- **"Go out more with people"** - As an introvert, I find crowds and social activities pretty draining. However this year I made extra effort and it has been greatly rewarding
+- **"Articulate your thoughts the way you want"** - I didn't want to change the way I would say just to satisfy the way how traditional books do. I said it with a bit of tough love
+- **"Time spent with family is never a wasted time"** - We have only about 16-17 years with them throughout their ~80 years of journey. I can always write my book later
+- **"Focus on fewer than many"** - No more juggling between 10 things, but deep diving into max 2
+- **"Helping others to design can be more satisfying than designing myself"** - I fell in love with this side of design and I'm looking forward to having more impact
+- **"More Silence than Noise"** - I gave my 'self' time and space to process and reflect on what I read and experienced. I went deeper than wider
+
+### Tackling FOMO-Driven Social Media Struggle (September 30, 2023)
+**Key Insights:**
+- **"You look at X as 1 thing, almost like a single person is doing it all. Then you look at yourself, doing only 1 thing"** - FOMO crips in. You start to feel less of yourself
+- **"1 person usually does 1 thing first. 1 thing well!"** - Once it's successful, then it is easier to create a course on teaching that thing
+- **"Find your 1 thing and focus on that. Don't worry about the rest. They will come naturally"** - Change your perspective from collective effort to single effort
+- **"Embrace the mindset of JOMO (Joy Of Missing Out) over FOMO"** - Instead of feeling bad about what you're not doing, focus on the thing you are doing well
+- **"It is okay to unfollow and block people who are not truly relevant to you at where you are in your journey today"** - Use social media in a better way
+- **"It's not what happens to you, but how you react to it that matters"** - Epictetus - We always have the power to choose our responses
+
+### Hustle Culture for Designers (September 23, 2023)
+**Key Insights:**
+- **"Hustle culture is a term that refers to the belief that working long hours and pushing yourself to the limit is the key to success"** - It depends on who you are, and where you are in your life and career
+- **"'Working Smart' became my solution to my younger's self's 'Working Hard' approach"** - However, you need to be Smart to work smart, and you need to Work Hard to be smart
+- **"You need to Work Hard to be smart"** - This is not really a choice of one or another, but more of a progression
+- **"First, you work hard, you learn what works and what doesn't, you gain experience, and then you transition to working smart"** - Intentionally or otherwise
+- **"Hustle Culture is not sustainable"** - If you are a 40 years old designer with kids and a full-time job, hustling long nights can drive you to burnout
+- **"I like to characterise this as more of an Obsession than Hustle"** - I obsess over things for a couple of weeks or a few months. Then to the next thing
+- **"My drive is purely based on my interest, not any external force"** - It is an 'I want to...' situation, not 'I should do...' So burnout is less likely
+- **"Take your rest as seriously as your hustle"** - In a creative field like ours, we can actually get more done by taking more breaks
+- **"Listen to your body. Hear your ambitions"** - Don't compare yourself to others. Everybody's circumstances are different. You do You
+
+### Why Visual Design Matters (June 24, 2023)
+**Key Insights:**
+- **"Visual Design often doesn't receive the respect it deserves among other disciplines such as UX, Development"** - But it matters tremendously
+- **"First impressions matter"** - Visual design creates the first impression that can make or break user engagement
+- **"Visual design is not just about making things pretty"** - It's about creating an emotional connection with users
+- **"Good visual design builds trust"** - Users judge credibility within milliseconds of seeing a design
+- **"Visual hierarchy guides users"** - It tells them what to focus on and in what order
+- **"Consistency in visual design creates familiarity"** - And familiarity breeds comfort and trust
+
 ## Actual Blog Content (2024 Articles)
 
 ### Letter to Young Designers (April 28, 2024)
