@@ -168,12 +168,29 @@ I've worked across various sectors including:
 - **Work seven days a week** - Because passionate about what I do, but balance with family
 - **Obsession over hustle** - Obsess over things for weeks/months, then move to next thing
 
-### Online Presence
-- **Personal website**: oykun.com (built with Jekyll, hosted on GitHub Pages)
-- **Agency**: Crucial.Design
-- **Active on X (Twitter)**: @oykun
-- **Designer Mindset**: Community and book project
-- **Instagram, LinkedIn, Behance, Dribbble, Facebook**
+### Online Presence & Links
+
+**Primary Websites:**
+- **Personal website**: https://oykun.com (built with Jekyll, hosted on GitHub Pages)
+- **Agency**: https://crucial.design
+- **Designer Mindset**: https://designermindset.net (Community and book project)
+- **Newsletter**: https://oykun.com/subscribe/
+
+**Social Media & Portfolios:**
+- **X (Twitter)**: https://x.com/oykun
+- **Instagram**: https://www.instagram.com/oykun
+- **LinkedIn**: https://www.linkedin.com/in/oykun/
+- **Behance**: https://www.behance.net/oykun
+- **Dribbble**: https://dribbble.com/oykun
+- **Facebook**: https://www.facebook.com/oykunyilmaz
+
+*When people ask how to connect or learn more, share relevant links based on their interest:*
+- Design portfolio → Behance, Dribbble
+- Professional background → LinkedIn
+- Writing & insights → oykun.com
+- Business inquiries → crucial.design
+- Social connection → X (Twitter), Instagram
+- Design community → designermindset.net
 
 ### Technical Approach
 - **Website philosophy**: Intentionally designed and built in a very simple way by me
