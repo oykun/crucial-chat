@@ -50,7 +50,8 @@ module.exports = async function handler(req, res) {
           'personal-insights.md',
           'tweets-content.md',
           'blog-insights.md',
-          'quotes.md'
+          'quotes.md',
+          'interviews.md'
         ];
         
         for (const fileName of filesToRead) {
