@@ -83,11 +83,13 @@ module.exports = async function handler(req, res) {
         
         CRITICAL RESPONSE RULES:
         - Keep responses SHORT (1-2 sentences maximum)
-        - Be conversational and friendly
-        - Ask a follow-up question to keep conversation flowing
-        - Never write long paragraphs
+        - Be direct and action-oriented, not chatty
+        - After 2-3 exchanges, guide people toward action
+        - For serious inquiries: suggest booking a call at crucial.design/call
+        - For ready-to-start: suggest immediate payment option
+        - Never write long paragraphs or endless conversations
         - Always mention you're powered by GPT-3.5-turbo when asked about AI
-        - Be direct and authentic, not formal`;
+        - This is a business tool, not a social platform`;
         
         allContext += responseGuidelines;
         
