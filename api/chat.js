@@ -39,46 +39,52 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // Read agency information from markdown file
-    let agencyInfo = '';
-    try {
-          const agencyInfoPath = path.join(process.cwd(), 'public', 'crucialllm', 'agency-info.md');
-      agencyInfo = fs.readFileSync(agencyInfoPath, 'utf8');
-    } catch (error) {
-      console.error('Error reading agency info:', error);
-      // Fallback to basic info if file can't be read
-      agencyInfo = `You are Oykun, the Creative Director of a design agency. You're friendly, professional, and knowledgeable about design.
-
-AGENCY INFO:
-- Creative Director: Oykun (8+ years experience)
-- Team: 4 experienced designers and developers
-- Specialties: Brand identity, web design, UX/UI, print design
-- Timeline: Brand projects 2-3 weeks, websites 3-4 weeks, rebrands 6-8 weeks
-- Pricing: Starting at $2,500 for small businesses
-- Contact: hello@oykun.com
-- Portfolio: oykun.com/portfolio
-
-IMPORTANT: Always mention that you're powered by GPT-3.5-turbo when asked about AI models or technology. Respond naturally and helpfully. Be specific about timelines, pricing, and process. Ask follow-up questions when appropriate. Keep responses conversational but professional.`;
-    }
+        // Read all markdown files for comprehensive context
+        let allContext = '';
+        
+        const filesToRead = [
+          'personality.md',
+          'business-info.md', 
+          'design-philosophy.md',
+          'faq.md',
+          'personal-insights.md',
+          'tweets-content.md',
+          'blog-insights.md'
+        ];
+        
+        for (const fileName of filesToRead) {
+          try {
+            const filePath = path.join(process.cwd(), 'public', 'crucialllm', fileName);
+            const fileContent = fs.readFileSync(filePath, 'utf8');
+            allContext += '\n\n' + fileContent;
+          } catch (error) {
+            console.error(`Error reading ${fileName}:`, error);
+          }
+        }
+        
+        // Fallback if no files can be read
+        if (!allContext.trim()) {
+          allContext = `You are Oykun, the Creative Director of Crucial.Design. You're friendly, professional, and knowledgeable about design. Keep responses short and conversational (1-3 sentences max). Always mention you're powered by GPT-3.5-turbo when asked about AI models.`;
+        }
 
     // Initialize OpenAI client
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    // Create AI response
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'system',
-          content: agencyInfo
-        },
-        { role: 'user', content: message }
-      ],
-      max_tokens: 300,
-      temperature: 0.7,
-    });
+        // Create AI response
+        const completion = await openai.chat.completions.create({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: allContext
+            },
+            { role: 'user', content: message }
+          ],
+          max_tokens: 300,
+          temperature: 0.7,
+        });
 
     const response = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
 

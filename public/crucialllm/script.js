@@ -15,39 +15,6 @@ function addMessage(content, isUser = false) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-function addTypingMessage(fullText) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message bot';
-    
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content typing';
-    
-    messageDiv.appendChild(contentDiv);
-    chatContainer.appendChild(messageDiv);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-    
-    // Type out the message letter by letter
-    let currentIndex = 0;
-    const typingSpeed = 20; // milliseconds per character (faster)
-    
-    function typeNextCharacter() {
-        if (currentIndex < fullText.length) {
-            contentDiv.textContent = fullText.substring(0, currentIndex + 1);
-            currentIndex++;
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-            setTimeout(typeNextCharacter, typingSpeed);
-        } else {
-            // Remove typing cursor when done
-            setTimeout(() => {
-                contentDiv.classList.remove('typing');
-            }, 500); // Keep cursor for a moment at the end
-        }
-    }
-    
-    // Start typing immediately
-    setTimeout(typeNextCharacter, 50); // Small delay to ensure DOM is ready
-}
-
 function showTyping() {
     const typingDiv = document.createElement('div');
     typingDiv.className = 'typing';
