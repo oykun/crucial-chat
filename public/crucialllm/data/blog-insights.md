@@ -55,6 +55,62 @@
 - **Psychology-driven decisions** - Every interface choice should be based on how people think
 - **Brave creative choices** - Making bold decisions when others are uncertain
 
+## Actual Blog Content (2021 Articles)
+
+### How I Invest My Money (November 10, 2021)
+**Key Insights:**
+- **"I'm 38 years old & I found out about investing my money at the age of 36! My parents or anyone in my family have never invested. What a loss!"** - Seeing now how my money grows
+- **"I'm a father of 2 kids (5 & 8yo). One of first thing I'll teach them is saving/investing/compounding"** - This is critical financial education
+- **"80% of my investment goes to long term Index Funds"** - I use Vanguard ISA account, it is trust worthy and has low fees
+- **"I did set up automated monthly direct debit payment"** - From my bank to Vanguard and Vanguard to purchase funds monthly. It is all automated
+- **"So far, I have made 40%+ return in Index funds"** - Long-term investing works
+- **"When it comes to where to invest, diversification becomes key"** - I invest in ~15 Funds with different weights
+- **"For the remaining 20% of my money, I invest in Individual Stocks and Crypto"** - Companies I know and believe in such as Apple, Amazon, Tesla
+- **"I don't sell when market goes down and people panic sells, I see these times as great opportunities to buy even more"** - Stay calm, invest long term, don't stress to time the market
+
+### How I Read More Books (May 15, 2021)
+**Key Insights:**
+- **"I replaced my phone with a book and this happened"** - Whenever I had a moment here and there, while waiting in line, walking to tube, lunch time
+- **"It turns out I actually have had enough time to read"** - We think we need to spare a big chunk of time but we don't
+- **"Use the little bits of 5-10 minutes here and there in your day to read. It quickly adds up!"** - You don't need hours at a time
+- **"Always carry a book. Kindle or physical"** - Pick up your book instead of your phone when you have a moment
+- **"Once you start using these bits of time to read, you will naturally want to create time for reading"** - As you fall back in love with reading
+
+### Get Up When You Wake Up (April 30, 2021)
+**Key Insights:**
+- **"We all have 24 hours in a day"** - Entrepreneur with 5 products and 4 kids with well balanced life or a single full time employee who struggles to find time
+- **"I get up when I wake up"** - Alarm goes off or we just wake up but we waste 10, 15+ mins turning in bed
+- **"I put my alarm for 5:30am, but I wake up sometime between 5:00 and 5:30am"** - This gives me about 1.5 hours before kids wake up
+- **"I don't remember when I was so productive last time! There is something magical about that early morning with fresh mind"** - I get so much done in that ~1h
+- **"I still get to spend time with my kids after work, and time with my wife after kids go to bed"** - And while everybody is in sleep in early morning, I have my time
+
+### New Challenges (April 26, 2021)
+**Key Insights:**
+- **"Don't fear to take new challenges bigger than you've ever dealt with"** - We don't grow when things are easy, we grow when we face challenges
+- **"I have accepted a job offer from a Tier 1 Investment Bank as a Vice President of Design role"** - To work on Design Systems and Financial Product designs
+- **"I'm a self taught designer and (used-to-be) developer"** - The way I've learned all my skills has been by taking new challenges in the real world
+- **"Things have been going a bit too well in my freelance world"** - But I wanted to learn a completely new business and focus more on improving my soft skills
+- **"I wanted to improve my time-management, presentation, communication, managing teams and projects"** - This job offer has it all and more
+- **"I love the difficult and challenging situation I've put myself in!"** - There is so much I need to learn and improve
+
+### How Do I Get My Best Projects? (February 21, 2021)
+**Key Insights:**
+- **"It is not What you know but Who!"** - The importance of connections
+- **"You need to be the first name that comes to mind when someone needs a designer"** - Put yourself out there
+- **"Share your work, experiments, experiences at platforms like Instagram, Dribbble, Twitter"** - Where you can make connections
+- **"Trust is the key! A potential client would be willing to pay more to a designer with less experience, but recommended by a trusted friend"** - A less risky option is more valuable
+- **"I have involved in hundreds of projects in my ~20 years of experience, and the bigger part of the best projects came from recommendations"** - This is how it actually works
+- **"Make connections, Share your work and the dream projects will find you"** - Investing time in technical skills is important, but give enough time to connections
+
+### Heroes over Mentors (February 15, 2021)
+**Key Insights:**
+- **"I've never had a mentor, but I've had heroes"** - I've put myself in their shoes when I need to make design or business decisions
+- **"I've worked hard to align quality of my work to my heroes"** - I can't mention a single name, there have been so many
+- **"We do not need to be in active communication with our heroes (which would make them mentors)"** - We can follow their work, blog, Twitter to learn
+- **"We can have countless heroes to learn from instead of waiting for a space in one's already tight calendar"** - This is more scalable
+- **"In my 20 years of experience, I have received countless emails, messages asking for advice"** - I have been doing my very best to respond every one of them
+- **"Let's share what we learn and be a Hero to someone"** - This is one of the reasons why I started this blog
+
 ## Actual Blog Content (2022 Articles)
 
 ### Design Process is Messy! as it should be (August 29, 2022)
