@@ -55,6 +55,74 @@
 - **Psychology-driven decisions** - Every interface choice should be based on how people think
 - **Brave creative choices** - Making bold decisions when others are uncertain
 
+## Actual Blog Content (2022 Articles)
+
+### Design Process is Messy! as it should be (August 29, 2022)
+**Key Insights:**
+- **"Design is a messy process! as it should be"** - The real work environments are not that strict, you will have room to break the rules
+- **"In my 20+ years of career in Design, I worked in various environments from small startups to large corporations as Senior Vice President of Design"** - Managing trillions of dollars
+- **"We do not always design in such a perfectly structured way. Nobody does. It is just not realistic"** - In real life, you need to dig and discover the root problem
+- **"In design, there aren't single rules that apply to every use case"** - You start with a common rule and revise it for your specific case
+- **"You break the rules, and it is okay"** - All these design courses are valuable. Study them, learn them, but bear in mind that real work environments are not that strict
+- **"Just Chill & Design"** - You will have room to break the rules you've learned, explore and make your own rules
+
+### Stop Charging Hourly! Start Charging for the Value! (August 20, 2022)
+**Key Insights:**
+- **"My one-man freelance design business has generated income in 7 figures"** - It is not because I've worked more hours, each year I've worked fewer hours while earning more
+- **"Price for the value, not for the hour!"** - The fewer hours you take to deliver your work, the more valuable it is
+- **"What your client pays is not really the 1-hour work you do at the technical level, but the 10 hours of work done in 1 hour backed with years of experience"** - Based on educated design and business decisions
+- **"There is always someone out there with less experience than you have"** - It may not be the 10x rate at first, but at least 1.5x or 2x
+- **"Ask questions to understand the client, business goals, competition, problems, the VALUE"** - And offer your solution based on that, not on your hour
+- **"You have to deliver what you promise!"** - This is not a manipulation tactic. This is a way for designers to better communicate their value
+- **"Don't punish yourself and don't undervalue your work"** - Don't undervalue your experience by starting client conversations with questions to understand the timeline for your hourly rate calculation
+
+### Video Gamer Skills that Make a Great Designer (August 8, 2022)
+**Key Insights:**
+- **"Enjoy your time with video games, do not see it as a waste of time as society thinks"** - This is YOUR time, use it as you like it. It will make you a better designer
+- **"I'm especially into FromSoftware games such as Dark Souls, Demon's Souls, Bloodborne, Elden Ring"** - These are challenging games that teach you to learn from your failures
+- **"Don't give up! Learn from the failures and improve on them"** - I find this approach similar to how the design process works
+- **"Playing these types of games with vague plots helps building investigative skills"** - Research and find answers for your design solution
+- **"Work with your team and push the limits of your creativity"** - Playing these types of creative, ambitious games helps building collaboration skills and creativity
+- **"Inspiration is everywhere. Do not limit yourself to design collection websites"** - Explore these magical worlds in video games
+- **"The time you like wasting is not wasted time"** - Bertrand Russell
+
+### Saying No to Projects with Pricing (March 28, 2022)
+**Key Insights:**
+- **"Don't undervalue your service and experience, you will be amazed to find out how much some businesses are willing to pay for it"** - Use pricing to say no
+- **"Instead of saying 'I'm not available', try responding with a much higher price than you normally charge"** - Like 2x or 3x
+- **"There was a time I asked for $32k for a 1-week sprint, just because I didn't want that project, but the client agreed"** - Then I rescheduled my other projects and got that sprint done with a great business result
+- **"This is one of the many factors how I have managed to earn more every year while working fewer hours"** - Experimenting with this approach
+- **"Either they will say yes and you earn much more for the same amount of work"** - Or they will say no and you can continue with your current project
+- **"You have learned that there are businesses out there happy to pay 2x+ $ for your service"** - Win-Win either way
+
+### 5 Benefits of Creative Constraints in Design (2022)
+**Key Insights:**
+- **"Constraints force creativity"** - When you have unlimited options, it's paralyzing. Constraints help you focus
+- **"Constraints help you make decisions faster"** - Less time spent debating, more time creating
+- **"Constraints lead to innovation"** - Some of the best solutions come from working within strict limitations
+- **"Constraints keep you focused"** - Instead of trying to do everything, you focus on what matters most
+- **"Embrace constraints instead of fighting them"** - They're not obstacles, they're opportunities
+
+### There Are No Small Design Projects (2022)
+**Key Insights:**
+- **"Every project is an opportunity to make an impact"** - No matter how small it seems
+- **"Small projects often lead to bigger opportunities"** - Treat every client with respect and deliver quality work
+- **"Your reputation is built on every project you do"** - Not just the big, flashy ones
+- **"Small projects are practice for big ones"** - Use them to refine your process and skills
+
+### Why You Should NOT Under-Promise and Over-Deliver (2022)
+**Key Insights:**
+- **"Under-promising and over-delivering sounds good in theory, but it sets wrong expectations"** - You're essentially lying about what you can do
+- **"Be honest about what you can deliver"** - Set realistic expectations from the start
+- **"Over-delivering can actually hurt you"** - Clients will expect that level as the baseline next time
+- **"Promise what you can deliver, then deliver exactly that"** - Consistently meeting expectations builds more trust than occasionally exceeding them
+
+### Procrastination by Reading (2022)
+**Key Insights:**
+- **"Reading can become a form of procrastination"** - When you're reading about doing instead of actually doing
+- **"Don't let learning become an excuse for not creating"** - At some point, you need to stop reading and start doing
+- **"Balance learning with doing"** - Read, then apply. Don't just consume endlessly
+
 ## Actual Blog Content (2023 Articles)
 
 ### 2023 Letter with 10 Lessons (December 30, 2023)
