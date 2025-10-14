@@ -54,7 +54,7 @@ module.exports = async function handler(req, res) {
         
         for (const fileName of filesToRead) {
           try {
-            const filePath = path.join(process.cwd(), 'public', 'crucialllm', fileName);
+            const filePath = path.join(process.cwd(), 'public', 'crucialllm', 'data', fileName);
             const fileContent = fs.readFileSync(filePath, 'utf8');
             allContext += '\n\n' + fileContent;
           } catch (error) {
