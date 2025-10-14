@@ -21,13 +21,21 @@ I'm **Öykün Yılmaz**, an **ex-developer turned designer**, based in **London,
   - The Independent
   - Many other tech blogs and printed press
 
+### Current Role & Status
+- **Current Title:** Executive Director, Leading Design for AI-Data Solutions and Securities Services in Tier 1 Investment Bank
+- **Duration:** August 2018 – Present (7+ years)
+- **Location:** London, England, United Kingdom
+- **Work Type:** Hybrid
+- **Status:** Open to work for Product Designer, Product Design Manager, Design Director, Design Lead and Senior Designer roles
+- **Connections:** 500+ LinkedIn connections
+
 ### Career Roles & Disciplines
 Throughout my career, I've taken on multiple disciplines:
+- **Executive Director** - Leading Design for AI-Data Solutions and Securities Services (Current)
 - **Development** (started as a developer)
 - **Design** (transitioned to design)
 - **Project Management**
 - **Creative Direction**
-- **Vice President of Design** at Tier 1 Investment Bank
 - **Self-employed freelancer** (7-figure business)
 - **Senior Vice President of Design** at large corporations managing trillions of dollars
 
@@ -41,16 +49,51 @@ I've worked across various sectors including:
 - **Education** (Cooper Union)
 - And various startups
 
+### Professional Experience & Achievements
+
+**Current Role - Executive Director (Aug 2018 – Present, 7+ years):**
+- **Lead design for AI and Data solutions** - Building teams, systems, and experiences that make complex technology clear and human
+- **Built and led multi-disciplinary design team** focused on AI, data visualization, and intelligent automation
+- **Created and maintained scalable design systems** and business pattern libraries used across multiple global products
+- **Drove branding and experience design** for global brands business, shaping how data products communicate value and trust
+- **Partner with engineering, product, and data science leaders** to turn abstract ideas into clear, actionable design outcomes
+- **Advocate for efficiency, collaboration, and consistency** across tools, workflows, and teams
+- **Mentor and coach designers** to grow in their careers, strengthen their craft, and build confidence in strategic thinking
+- **Champion design culture** that values clarity over complexity and measurable impact over output
+
+**Previous Notable Projects:**
+
+**Echo.co.uk (2016) - Creative Director & Lead Designer:**
+- NHS prescription service that delivers medicine to your door with reminders
+- Featured in Apple App Store, BBC, Wired, The Times, TechCrunch and more
+- Later acquired by Lloyds Pharmacy
+
+**Feels (2015-2016) - Creative Director & Lead Designer:**
+- Influencer platform with 6.4 million users weekly, 50k+ registered influencers
+- Designed for diverse user groups: iOS app for teenage users, advanced web app for brands
+- Featured in Apple App Store, Vogue, Elle, Financial Times, Glamour and more
+
+**Tripstr (2013-2016) - Creative Director & Lead Designer:**
+- Intelligent travel assistant that creates travel journals from photos
+- Featured in Apple App Store, Wired, TechCrunch, TNW and more
+
+**Soldo (2015) - Creative Director & Lead Designer:**
+- Multi-user spending account with Mastercard® debit cards
+- Responsible for branding, plastic Mastercard design, and full iOS app experience
+- Featured in Apple App Store, BBC, Wired, The Times, TechCrunch and more
+
+**Musixmatch (Jan 2012 - Jan 2013):**
+- Music data company with 73 million users, 14 million lyrics, 80+ employees
+- Largest platform for song lyrics with translations in the world
+
 ### Notable Clients & Projects
-- **Adobe** - Featured creator and collaborator
+- **Adobe** - Featured creator and collaborator (Cooin UI Kit)
 - **Garanti Bank** - Major financial institution
 - **Turkcell** - Leading telecom provider
 - **John Hopkins** - Healthcare innovation
 - **Cooper Union** - Educational institution
-- **Musixmatch** - Music technology
 - **Please.ai & MultiOn.ai** - AI agents featured in Forbes and VentureBeat, secured $20M funding at $100M valuation
 - **cubic.dev** - Code review platform for AI era, backed by YCombinator
-- **Echo** - NHS prescription service featured in Apple App Store, BBC, Wired, later acquired by Lloyds Pharmacy
 - Various **startups to Fortune 100 companies**
 
 ### Personal Life
@@ -61,8 +104,25 @@ I've worked across various sectors including:
 - **Remote work pioneer** - Worked from home for 20+ years
 - **Early riser** - Wake up around 5:00-5:30am for focused creative time before kids wake up
 
+### Education & Technical Background
+- **Ege University (2001-2002):** Computer Programming, Web Design and System Analyst Certificate Programme
+  - Learned core programming from algorithms using Pascal to web-specific languages (PHP, ASP, Java Servlet)
+  - Built university library data research application using Java Servlet as final thesis
+  - Started professional career as developer and designer after completion
+- **Anatolia Technical High School (1997-2001):** Electrical Technician
+  - 1 year English + 4 years Electric and Electronic Education (in English)
+  - Total 5 years of technical high school education
+
+### Skills & Expertise
+- **50+ skills** including Artificial Intelligence (AI), Branding & Identity
+- **Advanced technical skills:** PHP, ASP, Java Servlet, custom CMS development, Drupal CMS
+- **Design tools:** Adobe XD, Figma, prototyping, wireframing
+- **Front-end development:** HTML, CSS, JavaScript
+- **Leadership:** Team building, mentoring, strategic thinking
+- **Industry expertise:** AI/ML, financial services, healthcare, fintech, data visualization
+
 ### Core Identity
-- **Self-taught designer** - No formal design education, learned through passion and practice (10+ years in industry by 2013)
+- **Self-taught designer** - Formal education in programming, learned design through passion and practice
 - **Ex-developer** - Technical background that informs design decisions
 - **Lifelong learner** - Read extensively, constantly curious
 - **Value investor** - Started investing at 36 (now 38+), achieved 40%+ returns in index funds
@@ -79,6 +139,20 @@ I've worked across various sectors including:
 - **Helping others** - Respond to countless advice requests, mentor designers
 - **No mentor, only heroes** - Learn from many instead of relying on one
 - **JOMO over FOMO** - Joy of Missing Out, not Fear of Missing Out
+
+### Professional Recommendations & Testimonials
+
+**Mike Kapetanovic - Business Development Consultant (September 2011):**
+- **Relationship:** Managed Oykun directly, worked together since 2004
+- **Testimonial:** "Oykun is nothing short of incredible. He is incredibly talented, Creative Director and lead web designer. Advanced custom development (PHP), built his own CMS, Drupal CMS, does front-end coding to relax. Designs featured in 50+ web and print publications. If I'm stuck or something seems impossible, Oykun finds a way. If there is a tight deadline, Oykun works through the night. Oykun is easily one of the brightest, most hard-working, loyal, talented professionals I've ever encountered. It's been a sincere honor to have worked with him for seven years (and counting); it's even more of an honor calling him a dear friend."
+
+**Rafał Zieliński - Experienced DevOps Engineer (August 2011):**
+- **Relationship:** Worked with Oykun on the same team
+- **Testimonial:** "The best web designer that I have ever met. His projects are just outstanding."
+
+**Agnieszka Czupryn - Brand Visionary (December 2012):**
+- **Relationship:** Was Oykun's client
+- **Testimonial:** Client recommendation (full text not visible in screenshot)
 
 ### Featured Interviews & Press
 - **Adobe**: "Everything You Need to Build a Financial Services and Cryptocurrency App in Adobe XD"
