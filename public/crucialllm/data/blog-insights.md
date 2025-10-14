@@ -55,6 +55,48 @@
 - **Psychology-driven decisions** - Every interface choice should be based on how people think
 - **Brave creative choices** - Making bold decisions when others are uncertain
 
+## Actual Blog Content (2020 & Earlier Articles)
+
+### How Being an Introvert Makes Me a Better Designer (September 20, 2020)
+**Key Insights:**
+- **"I'm an introvert. Unfortunately, I have discovered this term and its true meaning quite late in my life"** - I have always preferred to be either by myself or with a small number of people
+- **"Introvert does NOT mean 'shy', 'socially awkward', 'boring', 'passive', 'reserved'"** - Introverts can be very social and outgoing, but not too often since it requires more energy
+- **"1+ of every 3 people tend to lean more towards an introverted personality"** - Bill Gates, Elon Musk, Warren Buffet, Steve Wozniak, Albert Einstein
+- **"Spend your free time the way you like, not the way you think you're supposed to"** - Quote from "Quiet" by Susan Cain
+- **"I've worked from home for more than 20 years"** - I thrive in my space without distractions
+- **"Introverts are independent"** - I use collaborative days to present my work, get feedback in person and head back home office to do the design work
+- **"Introverts are good listeners"** - This helps me to better understand the user group and product owners by observation. This makes me a more empathetic designer
+- **"Introverts are thinkers"** - I prefer to take my time to think before I speak or act. This saves me time and an unnecessary amount of re-doing
+- **"Introverts are detail-oriented"** - As I deeply listen, observe and think, I gather a lot of information to put in my design work with lots of little details
+- **"Introverts are good at focusing"** - As Albert Einstein said 'It is not that I'm so smart, it is just that I stay with problems longer'
+- **"Introverts have a strong imagination"** - We carefully observe the details and often find ourselves deep in our thoughts and worlds we have created in our heads
+- **"I no longer think that being introverted is a flaw"** - I acknowledge who I am and use my strengths in the best way possible
+- **"You be You! Live your life as you want, not as how society thinks you should"** - Don't feel bad for choosing to stay at home and do your thing
+
+### Self-Taught with Passion (May 2, 2013)
+**Key Insights:**
+- **"Being self-taught is all about working hard yourself on the path of your passion with endless patience and curiosity"** - Not just about learning without academic education
+- **"There is no university nor course that can teach you everything you need to know"** - Those are just tools on the path to your passion
+- **"I have been in this industry for over 10 years and everyday I learn new things"** - You have to be patient and stubborn
+- **"Even after years of experience, you will get to that 1 beautiful final design after 99 failure"** - Accept this process
+- **"Always keep your eyes open, always wonder how that beautiful design you saw today is done!"** - Be curious about everything around you and never be satisfied
+- **"If you have the true passion, everything is going to happen naturally"** - This is the most important matter for me
+- **"Be kind"** - We have an amazing community out there. Don't be an arrogant asshole with world of ego
+- **"Network"** - Go to conferences, local meet-ups, be active on social media
+- **"Be brave"** - Don't be afraid to work with people better than you, or to involve bigger projects than you have ever involved
+- **"Since the very beginning of my career, I took everything came to my path!"** - I did animations, print catalogs, interfaces for Android, iPhone, iPad, Mac, Windows
+- **"I didn't have any experience or education on any of those before I took these real client projects"** - I spent nights to learn and practise
+- **"Google: Internet, the endless information source just a click away. Use it"** - Nobody knows everything, but if you know how to find the answer, you will succeed
+- **"Never say 'ok, I'm the best, I know everything!'"** - Remember there is always someone better than you out there. Hunt them, learn from them
+
+### White Space (March 25, 2013)
+**Key Insights:**
+- **"White spaces in design are not wasted spaces"** - They clean the environment around the important element and gives better, easier, direct focus
+- **"'White space' is not literally a space with white colour. It's a blank space surrounds a given element"** - This 'blank space' sounds like a waste to some, which I disagree
+- **"White space is given to the key information"** - User catches instantly without any effort. She has a clear idea about what it's telling
+- **"In today's fast moving life, every second is precious for all of us"** - Let's pay attention to make our products easier to use and understandable in the minimum possible time
+- **"Let's give our key information in well spaced format. Let's keep it simple and use white space efficiently"** - You will see the benefits in no time
+
 ## Actual Blog Content (2021 Articles)
 
 ### How I Invest My Money (November 10, 2021)
