@@ -39,21 +39,34 @@ module.exports = async function handler(req, res) {
       });
     }
 
-        // Read all markdown files for comprehensive context
+        // Smart context loading based on question type
         let allContext = '';
         
-        const filesToRead = [
-          'personality.md',
-          'business-info.md', 
-          'design-philosophy.md',
-          'faq.md',
-          'personal-insights.md',
-          'tweets-content.md',
-          'blog-insights.md',
-          'quotes.md',
-          'interviews.md',
-          'business-journal.md'
-        ];
+        // Always load personality first
+        const baseFiles = ['personality.md'];
+        
+        // Determine additional files based on question content
+        const question = message.toLowerCase();
+        let additionalFiles = [];
+        
+        if (question.includes('design') || question.includes('ui') || question.includes('ux') || question.includes('visual')) {
+          additionalFiles.push('design-philosophy.md', 'business-info.md');
+        }
+        
+        if (question.includes('who') || question.includes('about') || question.includes('background') || question.includes('you')) {
+          additionalFiles.push('personal-insights.md');
+        }
+        
+        if (question.includes('business') || question.includes('hire') || question.includes('project') || question.includes('price')) {
+          additionalFiles.push('business-info.md', 'faq.md');
+        }
+        
+        if (question.includes('process') || question.includes('work') || question.includes('approach')) {
+          additionalFiles.push('business-journal.md', 'design-philosophy.md');
+        }
+        
+        // Combine and deduplicate files
+        const filesToRead = [...new Set([...baseFiles, ...additionalFiles])];
         
         for (const fileName of filesToRead) {
           try {
@@ -65,9 +78,22 @@ module.exports = async function handler(req, res) {
           }
         }
         
+        // Add strict response guidelines
+        const responseGuidelines = `
+        
+        CRITICAL RESPONSE RULES:
+        - Keep responses SHORT (1-2 sentences maximum)
+        - Be conversational and friendly
+        - Ask a follow-up question to keep conversation flowing
+        - Never write long paragraphs
+        - Always mention you're powered by GPT-3.5-turbo when asked about AI
+        - Be direct and authentic, not formal`;
+        
+        allContext += responseGuidelines;
+        
         // Fallback if no files can be read
         if (!allContext.trim()) {
-          allContext = `You are Oykun, the Creative Director of Crucial.Design. You're friendly, professional, and knowledgeable about design. Keep responses short and conversational (1-3 sentences max). Always mention you're powered by GPT-3.5-turbo when asked about AI models.`;
+          allContext = `You are Oykun, the Creative Director of Crucial.Design. You're friendly, professional, and knowledgeable about design. Keep responses short and conversational (1-2 sentences max). Always mention you're powered by GPT-3.5-turbo when asked about AI models.`;
         }
 
     // Initialize OpenAI client
@@ -85,7 +111,7 @@ module.exports = async function handler(req, res) {
             },
             { role: 'user', content: message }
           ],
-          max_tokens: 300,
+          max_tokens: 150,
           temperature: 0.7,
         });
 
