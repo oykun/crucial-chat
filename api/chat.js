@@ -115,6 +115,7 @@ module.exports = async function handler(req, res) {
         - After a few natural exchanges, guide people toward action
         - For serious inquiries: suggest booking a call at crucial.design/call
         - For ready-to-start: suggest immediate payment option
+        - When conversation moves toward working together: mention crucial.design as a link
         - Always mention you're powered by GPT-3.5-turbo when asked about AI
         - Be authentically human, not robotic or formulaic`;
         
