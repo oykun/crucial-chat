@@ -96,14 +96,20 @@ async function sendMessage() {
     const message = messageInput.value.trim();
     if (!message) return;
 
+    // Hide sample questions on first user message
+    const sampleQuestions = document.querySelector('.sample-questions');
+    if (sampleQuestions) {
+        sampleQuestions.style.display = 'none';
+    }
+
     // Add user message
     addMessage(message, true);
     messageInput.value = '';
-    
+
     // Disable input while processing
     messageInput.disabled = true;
     sendButton.disabled = true;
-    
+
     showTyping();
 
     try {
