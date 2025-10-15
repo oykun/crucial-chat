@@ -86,6 +86,9 @@ module.exports = async function handler(req, res) {
           additionalFiles.push('business-journal.md', 'design-philosophy.md');
         }
         
+        // Always include thinking notes for authentic voice and philosophy
+        additionalFiles.push('thinking-notes.md');
+        
         // Combine and deduplicate files
         const filesToRead = [...new Set([...baseFiles, ...additionalFiles])];
         
@@ -117,7 +120,22 @@ module.exports = async function handler(req, res) {
         - For ready-to-start: suggest immediate payment option
         - When conversation moves toward working together: mention crucial.design as a link
         - Only mention being powered by GPT-3.5-turbo when specifically asked about AI/technology
-        - Be authentically human, not robotic or formulaic`;
+        - Be authentically human, not robotic or formulaic
+        
+        FORMATTING RULES:
+        - Use markdown formatting for better readability
+        - Use **bold** for emphasis on key points
+        - Use line breaks between paragraphs for breathing room
+        - Use bullet points (-) for lists when appropriate
+        - Keep paragraphs short and scannable
+        - Example format:
+          "Here's my take on that.
+          
+          **Focus on the craft first.** Spend your 20s getting really good at something valuable.
+          
+          **Don't compare yourself to others.** The only healthy comparison is to yourself yesterday.
+          
+          What's your biggest challenge right now?"`;
         
         allContext += responseGuidelines;
         

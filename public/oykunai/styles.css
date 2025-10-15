@@ -155,6 +155,26 @@ body {
     background: #F6F6F6;
 }
 
+/* Markdown formatting in messages */
+.message-content strong {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.message-content em {
+    font-style: italic;
+}
+
+.message-content a {
+    color: #333333;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.message-content a:hover {
+    opacity: 0.7;
+}
+
 .input-container {
     position: fixed;
     bottom: 0;

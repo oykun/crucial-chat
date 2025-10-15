@@ -2,6 +2,26 @@ const chatContainer = document.getElementById('chatContainer');
 const messageInput = document.getElementById('messageInput');
 const sendButton = document.getElementById('sendButton');
 
+// Simple markdown parser for basic formatting
+function parseMarkdown(text) {
+    // Convert **bold** to <strong>
+    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    
+    // Convert *italic* to <em>
+    text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    
+    // Convert line breaks to <br>
+    text = text.replace(/\n/g, '<br>');
+    
+    // Convert bullet points (- item) to lists
+    text = text.replace(/^- (.+)$/gm, '• $1');
+    
+    // Convert links [text](url) to <a>
+    text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>');
+    
+    return text;
+}
+
 function addMessage(content, isUser = false, showAvatar = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
@@ -22,7 +42,13 @@ function addMessage(content, isUser = false, showAvatar = false) {
     
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
-    contentDiv.textContent = content;
+    
+    // Parse markdown for bot messages, plain text for user
+    if (!isUser) {
+        contentDiv.innerHTML = parseMarkdown(content);
+    } else {
+        contentDiv.textContent = content;
+    }
     
     messageDiv.appendChild(contentDiv);
     chatContainer.appendChild(messageDiv);
