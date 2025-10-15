@@ -199,10 +199,9 @@ updateSendButton();
 
 // Intro messages
 const introMessages = [
-    "Hey, it's OykunAI 👋",
-    "I'm trained on Oykun's tweets, journal entries, interviews, and design philosophy.",
-    "You can ask me anything about his work —\nCrucial.Design, design process, mindset, or business approach.",
-    "Let's talk 🙂"
+    "Hey, it's OykunAI",
+    "I'm trained on Oykun's design service, tweets, articles, interviews, design philosophy and more...",
+    "Let's talk =)"
 ];
 
 // Load intro messages with delay
