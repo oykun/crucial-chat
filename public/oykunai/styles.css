@@ -8,38 +8,29 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.5;
     color: #333333;
-    background: #FFFFFF;
+    background: #EEEDF0;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
-    height: 100vh;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
+    min-height: 100vh;
+    background: #EEEDF0;
+    position: relative;
+    padding-bottom: 120px;
 }
 
 .header {
-    background: #FFFFFF;
+    background: #EEEDF0;
     color: #333333;
-    padding: 60px 40px 40px;
+    padding: 10px 20px;
     text-align: center;
-    flex-shrink: 0;
-    position: relative;
 }
 
-.header h1 {
-    margin: 0 0 8px 0;
-    font-size: 32px;
-    font-weight: 600;
-    color: #333333;
-    letter-spacing: -0.5px;
-}
 
 .header p {
     margin: 0;
@@ -48,16 +39,34 @@ body {
     color: #666666;
 }
 
+.avatar {
+    margin-bottom: 24px;
+    display: flex;
+}
+
+.avatar-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #E5E5E5;
+    transition: border-color 0.2s ease;
+}
+
+.avatar-image:hover {
+    border-color: #333333;
+}
+
 .health-indicator {
-    position: absolute;
-    top: 30px;
-    right: 40px;
+    position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     font-size: 13px;
     font-weight: 400;
     color: #999999;
+    margin: 0 auto 4px auto;
 }
 
 .status-dot {
@@ -86,73 +95,117 @@ body {
 }
 
 .chat-container {
-    flex: 1;
-    overflow-y: auto;
     padding: 40px 60px;
-    background: #FFFFFF;
+    background: #EEEDF0;
 }
 
 .message {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     max-width: 90%;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-left: 52px; /* Avatar gap spacing */
 }
 
 .message.user {
     margin-left: auto;
     text-align: right;
+    flex-direction: row-reverse;
+    padding-left: 0; /* No avatar gap for user messages */
 }
 
 .message.bot {
     margin-right: auto;
 }
 
+.message.bot:has(.message-avatar) {
+    padding-left: 0; /* No extra padding when avatar is present */
+}
+
+.message-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.message-avatar .avatar-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #E5E5E5;
+}
+
 .message-content {
-    padding: 24px 28px;
+    padding: 16px 20px;
     font-size: 17px;
     line-height: 1.6;
     color: #333333;
     font-weight: 400;
+    border-radius: 24px;
+    border: none;
+}
+
+.message.user .message-content {
+    background: transparent;
+}
+
+.message.bot .message-content {
     background: #FFFFFF;
-    border-radius: 12px;
-    border: 1px solid #E5E5E5;
 }
 
 .input-container {
-    padding: 40px 60px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
     display: flex;
     gap: 12px;
-    background: #FFFFFF;
-    flex-shrink: 0;
+    z-index: 1000;
 }
 
-.input-container input {
+.input-container textarea {
     flex: 1;
-    padding: 20px 24px;
-    border: 1px solid #E5E5E5;
-    border-radius: 12px;
+    padding: 20px 70px 20px 24px;
+    border: none;
+    border-radius: 32px;
     background: #FFFFFF;
     font-size: 16px;
     outline: none;
     color: #333333;
     font-weight: 400;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    resize: none;
+    min-height: 56px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: inherit;
+    line-height: 1.5;
 }
 
-.input-container input:focus {
-    border-color: #333333;
+.input-container textarea:focus {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.input-container input::placeholder {
+.input-container textarea::placeholder {
     color: #999999;
     font-weight: 400;
 }
 
 .input-container button {
-    padding: 20px;
-    background: #333333;
-    color: #FFFFFF;
+    position: absolute;
+    right: 52px;
+    bottom: 52px;
+    padding: 12px;
+    background: #F5F5F5;
+    color: #666666;
     border: none;
-    border-radius: 12px;
+    border-radius: 24px;
     font-size: 16px;
     font-weight: 400;
     cursor: pointer;
@@ -160,17 +213,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
+    width: 40px;
+    height: 40px;
 }
 
 .input-container button:hover {
+    background: #E5E5E5;
+}
+
+.input-container button.enabled {
+    background: #333333;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.input-container button.enabled:hover {
     background: #222222;
 }
 
 .input-container button:disabled {
-    background: #AAAAAA;
-    color: #FFFFFF;
+    background: #CCCCCC;
+    color: #999999;
     cursor: not-allowed;
 }
 
@@ -197,8 +260,20 @@ body {
 }
 
 .sample-questions {
-    margin: 40px 0;
-    padding: 0;
+    margin: 0;
+    padding: 20px 40px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #EEEDF0;
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    z-index: 999;
 }
 
 .sample-questions-label {
@@ -212,36 +287,28 @@ body {
 
 .sample-question-btn {
     display: block;
-    width: 100%;
-    margin: 8px 0;
+    margin: 0;
     padding: 18px 22px;
-    background: #F8F8F8;
+    background: #d8d7d8;
     color: #333333;
-    border: 1px solid #E5E5E5;
-    border-radius: 12px;
+    border: none;
+    border-radius: 24px;
     font-size: 15px;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
     font-weight: 400;
     line-height: 1.5;
+    flex: 1;
+    min-width: 0;
 }
 
 .sample-question-btn:hover {
-    background: #F0F0F0;
-    border-color: #D5D5D5;
+    background: #E5E5E7;
 }
 
 .sample-question-btn:last-child {
     margin-bottom: 0;
-}
-
-.disclaimer {
-    text-align: center;
-    padding: 16px 40px 32px;
-    font-size: 12px;
-    color: #AAAAAA;
-    font-weight: 300;
 }
 
 /* Scrollbar styling */

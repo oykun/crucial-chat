@@ -2,9 +2,23 @@ const chatContainer = document.getElementById('chatContainer');
 const messageInput = document.getElementById('messageInput');
 const sendButton = document.getElementById('sendButton');
 
-function addMessage(content, isUser = false) {
+function addMessage(content, isUser = false, showAvatar = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+    
+    // Add avatar for bot messages only when explicitly requested
+    if (!isUser && showAvatar) {
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'message-avatar';
+        
+        const avatarImg = document.createElement('img');
+        avatarImg.src = 'oykunai.png';
+        avatarImg.alt = 'Oykun';
+        avatarImg.className = 'avatar-image';
+        
+        avatarDiv.appendChild(avatarImg);
+        messageDiv.appendChild(avatarDiv);
+    }
     
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
@@ -39,6 +53,19 @@ function showError(message) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
+// Sample responses for UI testing
+const sampleResponses = [
+    "Hey! I'm Oykun, Creative Director of Crucial.Design. I've been doing this for 25+ years and love helping AI founders build great products. What's your project about?",
+    "My design process is pretty straightforward - we chat, I get to work, you see first designs in 24-48 hours. I use Figma for design, Framer for sites. What do you need designed?",
+    "I work directly with founders, no juniors. $4,950/month for ongoing work, $7,950 for shorter projects. Ready to move fast? We can start today.",
+    "I specialize in AI product design, brand identity, web design, UX/UI, Framer builds, and pitch decks. Been helping generate over $1B in outcomes. Want to book a quick call to discuss?",
+    "Sure thing! I focus on design that actually works - no BS, just results. I'm passionate about helping founders move fast and build products people love. What's your timeline like?"
+];
+
+function getRandomResponse() {
+    return sampleResponses[Math.floor(Math.random() * sampleResponses.length)];
+}
+
 async function sendMessage() {
     const message = messageInput.value.trim();
     if (!message) return;
@@ -67,7 +94,7 @@ async function sendMessage() {
         hideTyping();
 
         if (response.ok) {
-            addMessage(data.response);
+            addMessage(data.response, false, true); // Show avatar for bot responses
         } else {
             showError(data.error || 'Sorry, something went wrong. Please try again.');
         }
@@ -109,20 +136,50 @@ async function checkHealth() {
             statusText.textContent = 'Service is active. Ask questions!';
         } else {
             statusDot.className = 'status-dot unhealthy';
-            statusText.textContent = 'Services down. Email me instead';
+            statusText.innerHTML = 'Services down. <a href="mailto:hello@oykun.com" style="color: inherit; text-decoration: underline;">Email me instead</a>';
         }
     } catch (error) {
         statusDot.className = 'status-dot unhealthy';
-        statusText.textContent = 'Services down. Email me instead';
+        statusText.innerHTML = 'Services down. <a href="mailto:hello@oykun.com" style="color: inherit; text-decoration: underline;">Email me instead</a>';
     }
 }
 
 // Event listeners
 sendButton.addEventListener('click', sendMessage);
 
-messageInput.addEventListener('keypress', (e) => {
+// Auto-resize textarea
+function autoResize(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+}
+
+// Update send button state
+function updateSendButton() {
+    const hasText = messageInput.value.trim().length > 0;
+    if (hasText) {
+        sendButton.classList.add('enabled');
+        sendButton.disabled = false;
+    } else {
+        sendButton.classList.remove('enabled');
+        sendButton.disabled = true;
+    }
+}
+
+messageInput.addEventListener('input', () => {
+    autoResize(messageInput);
+    updateSendButton();
+});
+
+messageInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-        sendMessage();
+        if (e.shiftKey) {
+            // Shift+Enter: Allow new line (default behavior)
+            return;
+        } else {
+            // Enter: Send message
+            e.preventDefault();
+            sendMessage();
+        }
     }
 });
 
@@ -131,6 +188,29 @@ checkHealth();
 
 // Check health every 30 seconds
 setInterval(checkHealth, 30000);
+
+// Initialize button state
+updateSendButton();
+
+// Intro messages
+const introMessages = [
+    "Hey, it's OykunAI 👋",
+    "I'm trained on Oykun's tweets, journal entries, interviews, and design philosophy.",
+    "You can ask me anything about his work —\nCrucial.Design, design process, mindset, or business approach.",
+    "Let's talk 🙂"
+];
+
+// Load intro messages with delay
+function loadIntroMessages() {
+    introMessages.forEach((message, index) => {
+        setTimeout(() => {
+            addMessage(message, false, index === 0); // Only show avatar on first message
+        }, index * 1000); // 1 second delay between each message
+    });
+}
+
+// Load intro messages
+loadIntroMessages();
 
 // Focus input on load
 messageInput.focus();

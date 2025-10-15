@@ -4,18 +4,30 @@ body {
     line-height: 1.6;
     color: #000;
     background: #fff;
-    padding: 40px;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
     max-width: 500px;
     margin: 0 auto;
-    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 a {
     color: blue;
-}
-
-a:visited {
-    color: purple;
 }
 
 h1 {
@@ -36,12 +48,10 @@ p {
 }
 
 .tools-grid {
-    margin-top: 40px;
 }
 
 .tool-card {
-    margin-bottom: 40px;
-    padding-bottom: 40px;
+    margin: 100px auto
 }
 
 .tool-card:last-child {

@@ -12,46 +12,32 @@
             <div class="health-indicator" id="healthIndicator">
                 <div class="status-dot checking" id="statusDot"></div>
                 <span id="statusText">Checking...</span>
-            </div>
-            <h1>oykunai</h1>
-            <p>Your Personal AI Assistant</p>
+            </div> 
         </div>
         
         <div class="chat-container" id="chatContainer">
-            <div class="message bot">
-                <div class="message-content">
-                    Ask me anything about Oykun's work, design process, or business approach. What would you like to know?
-                </div>
-            </div>
-            
-            <div class="sample-questions">
-                <p class="sample-questions-label">Try asking:</p>
-                <button class="sample-question-btn" onclick="sendSampleQuestion('What is your design process?')">
-                    What is your design process?
-                </button>
-                <button class="sample-question-btn" onclick="sendSampleQuestion('How do you work with clients?')">
-                    How do you work with clients?
-                </button>
-                <button class="sample-question-btn" onclick="sendSampleQuestion('What projects have you worked on?')">
-                    What projects have you worked on?
-                </button>
-                <button class="sample-question-btn" onclick="sendSampleQuestion('How can I hire you?')">
-                    How can I hire you?
-                </button>
-            </div>
+            <!-- Messages will be loaded dynamically -->
+        </div>
+        
+        <div class="sample-questions">
+            <button class="sample-question-btn" onclick="sendSampleQuestion('How can you help my startup with design?')">
+                How can you help my startup with design?
+            </button>
+            <button class="sample-question-btn" onclick="sendSampleQuestion('Do you have availability for new projects?')">
+                Do you have availability for new projects?
+            </button>
+            <button class="sample-question-btn" onclick="sendSampleQuestion('What\'s your approach to AI and design?')">
+                What's your approach to AI and design?
+            </button>
         </div>
         
         <div class="input-container">
-            <input type="text" id="messageInput" placeholder="Ask me anything..." autocomplete="off">
+            <textarea id="messageInput" placeholder="Ask me anything..." autocomplete="off" rows="1"></textarea>
             <button id="sendButton">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
                 </svg>
             </button>
-        </div>
-        
-        <div class="disclaimer">
-            This is an experimental application. The AI may return incorrect or incomplete information.
         </div>
     </div>
 

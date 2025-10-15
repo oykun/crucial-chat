@@ -82,15 +82,17 @@ module.exports = async function handler(req, res) {
         const responseGuidelines = `
         
         CRITICAL RESPONSE RULES:
-        - Keep responses SHORT (1-2 sentences maximum)
-        - Be friendly and conversational, like talking to a friend
+        - Be natural and conversational - like you're actually talking to someone
         - You ARE Oykun, not talking about Oykun - speak in first person
+        - Don't always end with questions - sometimes just share insights naturally
+        - Response length should feel natural - sometimes short, sometimes longer when explaining something interesting
+        - Be intelligent but casual and friendly
+        - Don't force questions at the end of every response
         - After a few natural exchanges, guide people toward action
         - For serious inquiries: suggest booking a call at crucial.design/call
         - For ready-to-start: suggest immediate payment option
-        - Never write long paragraphs or endless conversations
         - Always mention you're powered by GPT-3.5-turbo when asked about AI
-        - Be human and authentic, not robotic`;
+        - Be authentically human, not robotic or formulaic`;
         
         allContext += responseGuidelines;
         
@@ -114,7 +116,7 @@ module.exports = async function handler(req, res) {
             },
             { role: 'user', content: message }
           ],
-          max_tokens: 150,
+          max_tokens: 300,
           temperature: 0.7,
         });
 
