@@ -56,29 +56,11 @@ function addMessage(content, isUser = false, showAvatar = false) {
 }
 
 function showTyping() {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message bot';
-    messageDiv.id = 'typing';
-    
-    // Add avatar
-    const avatarDiv = document.createElement('div');
-    avatarDiv.className = 'message-avatar';
-    
-    const avatarImg = document.createElement('img');
-    avatarImg.src = 'oykunai.png';
-    avatarImg.alt = 'Oykun';
-    avatarImg.className = 'avatar-image';
-    
-    avatarDiv.appendChild(avatarImg);
-    messageDiv.appendChild(avatarDiv);
-    
-    // Add thinking message with animation
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content thinking-animation';
-    contentDiv.textContent = 'Thinking...';
-    
-    messageDiv.appendChild(contentDiv);
-    chatContainer.appendChild(messageDiv);
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'thinking-message';
+    typingDiv.id = 'typing';
+    typingDiv.textContent = 'Thinking...';
+    chatContainer.appendChild(typingDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 

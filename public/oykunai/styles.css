@@ -175,20 +175,21 @@ body {
     opacity: 0.7;
 }
 
-/* Thinking animation */
-.thinking-animation {
+/* Thinking message */
+.thinking-message {
     color: #999999;
-    background: linear-gradient(90deg, #F6F6F6 25%, #ECECEC 50%, #F6F6F6 75%);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
+    font-size: 15px;
+    padding: 12px 60px;
+    background: transparent;
+    animation: pulse 2s infinite;
 }
 
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.4;
     }
-    100% {
-        background-position: -200% 0;
+    50% {
+        opacity: 1;
     }
 }
 
