@@ -1,6 +1,7 @@
 const { OpenAI } = require('openai');
 const fs = require('fs');
 const path = require('path');
+const { checkRateLimit, validateMessage, logRequest, getSessionId } = require('./rate-limit');
 
 module.exports = async function handler(req, res) {
   // Only allow POST requests
@@ -13,6 +14,26 @@ module.exports = async function handler(req, res) {
 
         if (!message) {
           return res.status(400).json({ error: 'Message is required' });
+        }
+
+        // Get session ID for rate limiting
+        const sessionId = getSessionId(req);
+        
+        // Check rate limits
+        const rateLimitResult = checkRateLimit(sessionId);
+        if (!rateLimitResult.allowed) {
+          return res.status(429).json({ 
+            error: rateLimitResult.reason,
+            resetTime: rateLimitResult.resetTime
+          });
+        }
+
+        // Validate message content
+        const messageValidation = validateMessage(message);
+        if (!messageValidation.valid) {
+          return res.status(400).json({ 
+            error: messageValidation.reason 
+          });
         }
 
         // Log the question for review
@@ -122,10 +143,20 @@ module.exports = async function handler(req, res) {
 
     const response = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
 
-    res.status(200).json({ response });
+    // Log the successful request
+    logRequest(sessionId, message, response);
+
+    res.status(200).json({ 
+      response,
+      rateLimit: rateLimitResult.remaining
+    });
 
   } catch (error) {
     console.error('Error in chat API:', error);
+    
+    // Log the failed request
+    const sessionId = getSessionId(req);
+    logRequest(sessionId, message || '', null, error.message);
     
     // Handle specific OpenAI errors with honest messaging
     if (error.code === 'insufficient_quota') {

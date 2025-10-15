@@ -95,6 +95,11 @@ async function sendMessage() {
 
         if (response.ok) {
             addMessage(data.response, false, true); // Show avatar for bot responses
+        } else if (response.status === 429) {
+            // Rate limit exceeded
+            const resetTime = new Date(data.resetTime);
+            const timeUntilReset = Math.ceil((resetTime - Date.now()) / 1000 / 60); // minutes
+            showError(`Rate limit reached. Please wait ${timeUntilReset} minutes before sending another message.`);
         } else {
             showError(data.error || 'Sorry, something went wrong. Please try again.');
         }
