@@ -175,6 +175,23 @@ body {
     opacity: 0.7;
 }
 
+/* Thinking animation */
+.thinking-animation {
+    color: #999999;
+    background: linear-gradient(90deg, #F6F6F6 25%, #ECECEC 50%, #F6F6F6 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 .input-container {
     position: fixed;
     bottom: 0;
