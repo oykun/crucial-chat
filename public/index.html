@@ -497,6 +497,267 @@
             text-align: center;
         }
         
+        /* Web Window Styles */
+        .web-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+        }
+        
+        .web-toolbar {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: #F8F8F8;
+            border-bottom: 1px solid #E0E0E0;
+            gap: 8px;
+        }
+        
+        .web-nav-buttons {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .web-nav-btn, .web-action-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #E0E0E0;
+            background: #FFFFFF;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .web-nav-btn:hover, .web-action-btn:hover {
+            background: #F0F0F0;
+        }
+        
+        .web-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .web-address-bar {
+            flex: 1;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .web-address-bar input {
+            flex: 1;
+            padding: 6px 12px;
+            border: 1px solid #E0E0E0;
+            border-radius: 16px;
+            background: #FFFFFF;
+            font-size: 12px;
+            outline: none;
+        }
+        
+        .web-address-bar input:focus {
+            border-color: #FF3B30;
+        }
+        
+        .web-external-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #E0E0E0;
+            background: #FFFFFF;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .web-external-btn:hover {
+            background: #F0F0F0;
+        }
+        
+        .web-favorites-bar {
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: #F8F8F8;
+            border-bottom: 1px solid #E0E0E0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .fav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #333333;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 0;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .fav-link:hover {
+            color: #FF3B30;
+        }
+        
+        .fav-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+        }
+        
+        .fav-folder {
+            position: relative;
+        }
+        
+        .fav-folder-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #333333;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 0;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .fav-folder-header:hover {
+            color: #FF3B30;
+        }
+        
+        .fav-folder-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .fav-folder.open .fav-folder-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .fav-folder-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 140px;
+            margin-top: 4px;
+            padding: 4px 0;
+        }
+        
+        .fav-folder-content .fav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            margin: 0;
+            border-bottom: 1px solid #F0F0F0;
+        }
+        
+        .fav-folder-content .fav-link:last-child {
+            border-bottom: none;
+        }
+        
+        .fav-folder-content .fav-link:hover {
+            background: #F8F8F8;
+        }
+        
+        .web-body {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .web-favorites {
+            padding: 40px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .web-favorites h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 24px;
+            width: 100%;
+        }
+        
+        .favorite-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .favorite-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .favorite-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #F5F5F5;
+            border: 1px solid #E0E0E0;
+        }
+        
+        .favorite-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        
+        .favorite-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #666666;
+            background: #F5F5F5;
+            border-radius: 12px;
+        }
+        
+        .favorite-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333333;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .web-iframe-container {
+            height: 100%;
+            width: 100%;
+        }
+        
         .menu-right {
             display: flex;
             align-items: center;
@@ -802,14 +1063,8 @@
                 <div class="menu-item" id="oykunOSMenu">
                     Oykun OS
                     <div class="menu-dropdown" id="oykunOSDropdown">
+                        <div class="menu-dropdown-item" onclick="openAbout()">About</div>
                         <div class="menu-dropdown-item" onclick="openSettings()">Settings</div>
-                    </div>
-                </div>
-                <div class="menu-item" id="helpMenu">
-                    Help
-                    <div class="menu-dropdown" id="helpDropdown">
-                        <div class="menu-dropdown-item" onclick="openFAQ()">FAQ</div>
-                        <div class="menu-dropdown-item" onclick="mailToOykun()">Mail to oykun</div>
                     </div>
                 </div>
             </div>
@@ -821,57 +1076,6 @@
         
     <!-- Desktop -->
     <div class="desktop">
-        <!-- Notes Window -->
-        <div class="window active" id="notesWindow" style="top: 80px; left: 120px; width: 650px; height: 550px;">
-            <div class="title-bar" id="notesTitleBar">
-                <div class="window-controls">
-                    <div class="window-btn close" data-window="notesWindow"></div>
-                    <div class="window-btn maximize" data-window="notesWindow"></div>
-                </div>
-                <div class="window-title">Notes</div>
-                <div style="width: 36px;"></div>
-            </div>
-            <div class="notes-content">
-                <div class="notes-text">
-Welcome to Oykun's AI Lab
-
-This is my playground for exploring AI-assisted creativity, design thinking, and human-computer interaction.
-
-Each experiment here is a small attempt to make AI tools that actually feel good to use.
-
-After 25 years designing products and helping founders build better experiences, I'm now channeling that craft into AI experiments.
-
-<div class="divider"></div>
-
-Experiments
-
-💬 Chat
-Chat with an AI trained on my design philosophy, articles, and insights.
-Ask about design, business, or the creative process.
-
-⏳ More Coming Soon
-Always experimenting with new ideas.
-
-<div class="divider"></div>
-
-Connect
-
-→ Follow me on X: <a href="https://x.com/oykun" target="_blank">x.com/oykun</a>
-Design insights, AI experiments, and creative thinking.
-
-→ Need design help? <a href="https://crucial.design" target="_blank">crucial.design</a>
-Helping founders build products that convert — backed by 25 years of experience.
-                </div>
-                <div class="window-resize-handle nw" data-window="notesWindow" data-direction="nw"></div>
-                <div class="window-resize-handle ne" data-window="notesWindow" data-direction="ne"></div>
-                <div class="window-resize-handle sw" data-window="notesWindow" data-direction="sw"></div>
-                <div class="window-resize-handle se" data-window="notesWindow" data-direction="se"></div>
-                <div class="window-resize-handle n" data-window="notesWindow" data-direction="n"></div>
-                <div class="window-resize-handle s" data-window="notesWindow" data-direction="s"></div>
-                <div class="window-resize-handle w" data-window="notesWindow" data-direction="w"></div>
-                <div class="window-resize-handle e" data-window="notesWindow" data-direction="e"></div>
-            </div>
-        </div>
         
         <!-- Messages Window -->
         <div class="window minimized" id="oykunaiWindow" style="top: 50px; right: 80px; left: auto; width: 420px; height: calc(100vh - 140px);">
@@ -940,6 +1144,193 @@ Helping founders build products that convert — backed by 25 years of experienc
             </div>
         </div>
         
+        <!-- About Window -->
+        <div class="window active" id="aboutWindow" style="top: 80px; left: 120px; width: 650px; height: 550px;">
+            <div class="title-bar" id="aboutTitleBar">
+                <div class="window-controls">
+                    <div class="window-btn close" data-window="aboutWindow"></div>
+                    <div class="window-btn maximize" data-window="aboutWindow"></div>
+                </div>
+                <div class="window-title">About Oykun OS</div>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="notes-content">
+                <div class="notes-text">Welcome to Oykun's AI Lab
+Experimenting with AI.
+Fulfilling my curiosity. Learning by doing.
+
+This is my playground for exploring AI-assisted creativity, design thinking, and human-computer interaction.
+Each experiment here is a small attempt to make AI tools that actually feel good to use.
+After 25 years designing products and helping founders build better experiences,
+I'm now channeling that craft into AI experiments.
+
+<div class="divider"></div>
+
+Experiments
+
+💬 Chat
+Chat with an AI trained on my design philosophy, articles, and insights.
+Ask about design, business, or the creative process.
+
+🌐 Web
+A Safari-like browser built into Oykun OS. Browse the web with favorites,
+address bar navigation, and seamless integration within the desktop environment.
+
+⏳ More Coming Soon
+Always experimenting with new ideas.
+
+<div class="divider"></div>
+
+Connect
+
+→ Follow me on X: <a href="https://x.com/oykun" target="_blank">x.com/oykun</a>
+Design insights, AI experiments, and creative thinking.
+
+→ Need design help? <a href="https://crucial.design" target="_blank">crucial.design</a>
+Helping founders build products that convert — backed by 25 years of experience.
+                </div>
+                <div class="window-resize-handle nw" data-window="aboutWindow" data-direction="nw"></div>
+                <div class="window-resize-handle ne" data-window="aboutWindow" data-direction="ne"></div>
+                <div class="window-resize-handle sw" data-window="aboutWindow" data-direction="sw"></div>
+                <div class="window-resize-handle se" data-window="aboutWindow" data-direction="se"></div>
+                <div class="window-resize-handle n" data-window="aboutWindow" data-direction="n"></div>
+                <div class="window-resize-handle s" data-window="aboutWindow" data-direction="s"></div>
+                <div class="window-resize-handle w" data-window="aboutWindow" data-direction="w"></div>
+                <div class="window-resize-handle e" data-window="aboutWindow" data-direction="e"></div>
+            </div>
+        </div>
+        
+        <!-- Web Window -->
+        <div class="window minimized" id="webWindow" style="top: 60px; left: 100px; width: 1200px; height: 800px;">
+            <div class="title-bar" id="webTitleBar">
+                <div class="window-controls">
+                    <div class="window-btn close" data-window="webWindow"></div>
+                    <div class="window-btn maximize" data-window="webWindow"></div>
+                </div>
+                <div class="window-title">Web</div>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="web-content">
+                <div class="web-toolbar">
+                    <div class="web-nav-buttons">
+                        <button class="web-nav-btn" id="webHomeBtn">⌂</button>
+                        <button class="web-nav-btn" id="webBackBtn" disabled>←</button>
+                        <button class="web-nav-btn" id="webForwardBtn" disabled>→</button>
+                        <button class="web-nav-btn" id="webRefreshBtn">↻</button>
+                    </div>
+                    <div class="web-address-bar">
+                        <input type="text" id="webAddressInput" placeholder="Search or enter website name" value="">
+                        <button class="web-external-btn" id="webExternalBtn">↗</button>
+                    </div>
+                </div>
+                <div class="web-favorites-bar">
+                    <a href="#" class="fav-link" data-url="https://oykun.com">
+                        <img src="https://www.google.com/s2/favicons?domain=oykun.com&sz=16" alt="Oykun's Blog" class="fav-icon">
+                        <span>Oykun's Blog</span>
+                    </a>
+                    <a href="#" class="fav-link" data-url="https://crucial.design">
+                        <img src="https://www.google.com/s2/favicons?domain=crucial.design&sz=16" alt="Crucial.Design" class="fav-icon">
+                        <span>Crucial.Design</span>
+                    </a>
+                    <div class="fav-folder">
+                        <a href="#" class="fav-folder-header" id="toolsFolderHeader">
+                            <span>Tools</span>
+                            <span class="fav-folder-arrow">▼</span>
+                        </a>
+                        <div class="fav-folder-content" id="toolsFolderContent" style="display: none;">
+                            <a href="#" class="fav-link" data-url="http://mobbin.com/?via=oykun">
+                                <img src="https://www.google.com/s2/favicons?domain=mobbin.com&sz=16" alt="Mobbin" class="fav-icon">
+                                <span>Mobbin</span>
+                            </a>
+                            <a href="#" class="fav-link" data-url="https://psxid.figma.com/l16yu2303itm">
+                                <img src="https://www.google.com/s2/favicons?domain=figma.com&sz=16" alt="Figma" class="fav-icon">
+                                <span>Figma</span>
+                            </a>
+                            <a href="#" class="fav-link" data-url="https://www.framer.com/?via=oykun33">
+                                <img src="https://www.google.com/s2/favicons?domain=framer.com&sz=16" alt="Framer" class="fav-icon">
+                                <span>Framer</span>
+                            </a>
+                            <a href="#" class="fav-link" data-url="https://affiliate.notion.so/61qajp7ha2th">
+                                <img src="https://www.google.com/s2/favicons?domain=notion.so&sz=16" alt="Notion" class="fav-icon">
+                                <span>Notion</span>
+                            </a>
+                            <a href="#" class="fav-link" data-url="http://cursor.com">
+                                <img src="https://www.google.com/s2/favicons?domain=cursor.com&sz=16" alt="Cursor AI" class="fav-icon">
+                                <span>Cursor AI</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="web-body">
+                    <div class="web-favorites" id="webFavorites">
+                        <h2>Favorites</h2>
+                        <div class="favorites-grid">
+                            <div class="favorite-item" data-url="https://oykun.com">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=oykun.com&sz=64" alt="Oykun's Blog" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">O</div>
+                                </div>
+                                <div class="favorite-label">Oykun's Blog</div>
+                            </div>
+                            <div class="favorite-item" data-url="https://crucial.design">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=crucial.design&sz=64" alt="Crucial.Design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">C</div>
+                                </div>
+                                <div class="favorite-label">Crucial.Design</div>
+                            </div>
+                            <div class="favorite-item" data-url="http://mobbin.com/?via=oykun">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=mobbin.com&sz=64" alt="Mobbin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">M</div>
+                                </div>
+                                <div class="favorite-label">Mobbin</div>
+                            </div>
+                            <div class="favorite-item" data-url="https://psxid.figma.com/l16yu2303itm">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="Figma" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">F</div>
+                                </div>
+                                <div class="favorite-label">Figma</div>
+                            </div>
+                            <div class="favorite-item" data-url="https://www.framer.com/?via=oykun33">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="Framer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">F</div>
+                                </div>
+                                <div class="favorite-label">Framer</div>
+                            </div>
+                            <div class="favorite-item" data-url="https://affiliate.notion.so/61qajp7ha2th">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">N</div>
+                                </div>
+                                <div class="favorite-label">Notion</div>
+                            </div>
+                            <div class="favorite-item" data-url="http://cursor.com">
+                                <div class="favorite-icon">
+                                    <img src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="Cursor AI" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="favorite-fallback" style="display: none;">C</div>
+                                </div>
+                                <div class="favorite-label">Cursor AI</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="web-iframe-container" id="webIframeContainer" style="display: none;">
+                        <iframe id="webIframe" src="" style="width: 100%; height: 100%; border: none;" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+                    </div>
+                </div>
+                <div class="window-resize-handle nw" data-window="webWindow" data-direction="nw"></div>
+                <div class="window-resize-handle ne" data-window="webWindow" data-direction="ne"></div>
+                <div class="window-resize-handle sw" data-window="webWindow" data-direction="sw"></div>
+                <div class="window-resize-handle se" data-window="webWindow" data-direction="se"></div>
+                <div class="window-resize-handle n" data-window="webWindow" data-direction="n"></div>
+                <div class="window-resize-handle s" data-window="webWindow" data-direction="s"></div>
+                <div class="window-resize-handle w" data-window="webWindow" data-direction="w"></div>
+                <div class="window-resize-handle e" data-window="webWindow" data-direction="e"></div>
+            </div>
+        </div>
+        
         <!-- Settings Window -->
         <div class="window minimized" id="settingsWindow" style="top: 80px; left: 200px; width: 500px; height: 400px;">
             <div class="title-bar" id="settingsTitleBar">
@@ -990,8 +1381,8 @@ Helping founders build products that convert — backed by 25 years of experienc
             
     <!-- Dock -->
     <div class="dock">
-        <div class="dock-item active" id="notesDockIcon" data-window="notesWindow" title="Notes">
-            <div class="dock-label">Notes</div>
+        <div class="dock-item" id="webDockIcon" data-window="webWindow" title="Web">
+            <div class="dock-label">Web</div>
         </div>
         <div class="dock-item" id="oykunaiDockIcon" data-window="oykunaiWindow" title="Chat">
             <div class="dock-label">Chat</div>
@@ -1014,14 +1405,6 @@ Helping founders build products that convert — backed by 25 years of experienc
         updateTime();
         setInterval(updateTime, 1000);
         
-        // Help dropdown functionality
-        const helpMenu = document.getElementById('helpMenu');
-        const helpDropdown = document.getElementById('helpDropdown');
-        
-        helpMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            helpDropdown.classList.toggle('show');
-        });
         
         // Oykun OS dropdown functionality
         const oykunOSMenu = document.getElementById('oykunOSMenu');
@@ -1034,27 +1417,20 @@ Helping founders build products that convert — backed by 25 years of experienc
         
         // Close dropdowns when clicking outside
         document.addEventListener('click', (e) => {
-            if (!helpMenu.contains(e.target)) {
-                helpDropdown.classList.remove('show');
-            }
             if (!oykunOSMenu.contains(e.target)) {
                 oykunOSDropdown.classList.remove('show');
             }
         });
         
-        // Help dropdown functions
-        function openFAQ() {
-            helpDropdown.classList.remove('show');
-            // For now, just show an alert - you can replace this with actual FAQ content
-            alert('FAQ content coming soon!');
+        
+        // About and Settings functions
+        function openAbout() {
+            oykunOSDropdown.classList.remove('show');
+            const aboutWindow = document.getElementById('aboutWindow');
+            aboutWindow.classList.remove('minimized');
+            bringToFront(aboutWindow);
         }
         
-        function mailToOykun() {
-            helpDropdown.classList.remove('show');
-            window.location.href = 'mailto:hello@oykun.com';
-        }
-        
-        // Settings functions
         function openSettings() {
             oykunOSDropdown.classList.remove('show');
             const settingsWindow = document.getElementById('settingsWindow');
@@ -1065,16 +1441,18 @@ Helping founders build products that convert — backed by 25 years of experienc
         
         // Make all windows draggable
         const windows = {
-            notesWindow: document.getElementById('notesWindow'),
             oykunaiWindow: document.getElementById('oykunaiWindow'),
             mailWindow: document.getElementById('mailWindow'),
+            aboutWindow: document.getElementById('aboutWindow'),
+            webWindow: document.getElementById('webWindow'),
             settingsWindow: document.getElementById('settingsWindow')
         };
         
         const titleBars = {
-            notesWindow: document.getElementById('notesTitleBar'),
             oykunaiWindow: document.getElementById('oykunaiTitleBar'),
             mailWindow: document.getElementById('mailTitleBar'),
+            aboutWindow: document.getElementById('aboutTitleBar'),
+            webWindow: document.getElementById('webTitleBar'),
             settingsWindow: document.getElementById('settingsTitleBar')
         };
         
@@ -1225,6 +1603,11 @@ Helping founders build products that convert — backed by 25 years of experienc
                     bringToFront(windowEl);
                     document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active'));
                     icon.classList.add('active');
+                    
+                    // Load default site for Web window
+                    if (windowId === 'webWindow') {
+                        loadDefaultSite();
+                    }
                 } else {
                     windowEl.classList.add('minimized');
                     icon.classList.remove('active');
@@ -1405,6 +1788,330 @@ Helping founders build products that convert — backed by 25 years of experienc
         
         // Set default wallpaper selection
         document.querySelector('.wallpaper-option[data-wallpaper="gray"]').classList.add('selected');
+        
+        // Web window functionality
+        const webAddressInput = document.getElementById('webAddressInput');
+        const webExternalBtn = document.getElementById('webExternalBtn');
+        const webHomeBtn = document.getElementById('webHomeBtn');
+        const webIframe = document.getElementById('webIframe');
+        const webFavorites = document.getElementById('webFavorites');
+        const webIframeContainer = document.getElementById('webIframeContainer');
+        const webBackBtn = document.getElementById('webBackBtn');
+        const webForwardBtn = document.getElementById('webForwardBtn');
+        const webRefreshBtn = document.getElementById('webRefreshBtn');
+        
+        // Navigation history
+        let webHistory = [];
+        let currentHistoryIndex = -1;
+        
+        // Go to URL function
+        function goToUrl(url) {
+            if (!url) return;
+            
+            // Add protocol if missing
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            
+            // Add to history
+            webHistory = webHistory.slice(0, currentHistoryIndex + 1);
+            webHistory.push(url);
+            currentHistoryIndex = webHistory.length - 1;
+            
+            // Update UI
+            webFavorites.style.display = 'none';
+            webIframeContainer.style.display = 'block';
+            
+            // Show only the core domain in address bar
+            try {
+                const urlObj = new URL(url);
+                const displayUrl = urlObj.hostname;
+                webAddressInput.value = displayUrl;
+            } catch (e) {
+                webAddressInput.value = url;
+            }
+            
+            // Use proxy for all URLs to bypass iframe restrictions
+            tryProxyIframe(url);
+            
+            // Update navigation buttons
+            updateNavButtons();
+        }
+        
+        // Try proxy iframe loading
+        function tryProxyIframe(url) {
+            // Show loading message
+            webIframeContainer.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 40px; text-align: center;">
+                    <h3 style="color: #666; margin-bottom: 16px;">Loading via proxy...</h3>
+                    <p style="color: #999; margin-bottom: 24px;">Fetching ${url}</p>
+                    <div style="width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #FF3B30; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                </div>
+            `;
+            
+            // Add CSS for spinner if not already added
+            if (!document.getElementById('spinner-css')) {
+                const style = document.createElement('style');
+                style.id = 'spinner-css';
+                style.textContent = '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
+                document.head.appendChild(style);
+            }
+            
+            // Create iframe with proxy URL
+            const proxyUrl = `/api/proxy?url=${encodeURIComponent(url)}`;
+            
+            // Reset iframe container content
+            webIframeContainer.innerHTML = `<iframe id="webIframe" src="${proxyUrl}" style="width: 100%; height: 100%; border: none;" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>`;
+            
+            // Get the new iframe reference
+            const newIframe = document.getElementById('webIframe');
+            
+            // Add load event listener
+            newIframe.addEventListener('load', function() {
+                console.log('Proxy iframe loaded successfully');
+            }, { once: true });
+            
+            newIframe.addEventListener('error', function() {
+                console.log('Proxy iframe failed to load');
+                handleIframeError();
+            }, { once: true });
+        }
+        
+        // Try direct iframe loading (kept as fallback)
+        function tryDirectIframe(url) {
+            // Reset iframe container content
+            webIframeContainer.innerHTML = '<iframe id="webIframe" src="" style="width: 100%; height: 100%; border: none;" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>';
+            
+            // Get the new iframe reference
+            const newIframe = document.getElementById('webIframe');
+            
+            // Set iframe src
+            newIframe.src = url;
+            
+            // Check if content loads
+            checkIframeLoad();
+        }
+        
+        
+        // Update navigation buttons
+        function updateNavButtons() {
+            webBackBtn.disabled = currentHistoryIndex <= 0;
+            webForwardBtn.disabled = currentHistoryIndex >= webHistory.length - 1;
+        }
+        
+        // Handle iframe loading errors
+        function handleIframeError() {
+            const currentUrl = webAddressInput.value;
+            if (currentUrl) {
+                // Show message that site can't be loaded in iframe
+                webIframeContainer.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 40px; text-align: center;">
+                        <h3 style="color: #666; margin-bottom: 16px;">This site can't be displayed in the browser</h3>
+                        <p style="color: #999; margin-bottom: 24px;">Some websites block being loaded in iframes for security reasons.</p>
+                        <div style="display: flex; gap: 12px;">
+                            <button onclick="showFavorites()" style="padding: 12px 24px; background: #F0F0F0; color: #333; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">
+                                Back to Favorites
+                            </button>
+                            <button onclick="document.getElementById('webExternalBtn').click()" style="padding: 12px 24px; background: #FF3B30; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">
+                                Open Externally
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Note: iframe event listeners are now added dynamically in checkIframeLoad()
+        
+        // Check if iframe content is blocked after a delay
+        let iframeLoadTimeout;
+        let iframeLoaded = false;
+        
+        function checkIframeLoad() {
+            iframeLoaded = false;
+            clearTimeout(iframeLoadTimeout);
+            
+            // Add load event listener to the iframe
+            const iframe = document.getElementById('webIframe');
+            if (iframe) {
+                iframe.addEventListener('load', function() {
+                    iframeLoaded = true;
+                    console.log('Iframe loaded successfully');
+                }, { once: true });
+                
+                iframe.addEventListener('error', function() {
+                    console.log('Iframe failed to load');
+                    handleIframeError();
+                }, { once: true });
+            }
+            
+            // Only show error if iframe hasn't loaded after 5 seconds
+            iframeLoadTimeout = setTimeout(() => {
+                if (!iframeLoaded && webIframeContainer.style.display !== 'none') {
+                    console.log('Iframe timeout - checking if content is accessible');
+                    try {
+                        const iframe = document.getElementById('webIframe');
+                        if (iframe && iframe.contentDocument === null) {
+                            console.log('Iframe content blocked - showing error');
+                            handleIframeError();
+                        }
+                    } catch (e) {
+                        console.log('Iframe access blocked - showing error');
+                        handleIframeError();
+                    }
+                }
+            }, 5000);
+        }
+        
+        // Home button click
+        webHomeBtn.addEventListener('click', () => {
+            showFavorites();
+        });
+        
+        // External button click - open in new window
+        webExternalBtn.addEventListener('click', () => {
+            const url = webAddressInput.value;
+            if (url) {
+                let fullUrl = url;
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    fullUrl = 'https://' + url;
+                }
+                window.open(fullUrl, '_blank');
+            }
+        });
+        
+        // Enter key in address bar
+        webAddressInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                goToUrl(webAddressInput.value);
+            }
+        });
+        
+        // Navigation buttons
+        webBackBtn.addEventListener('click', () => {
+            if (currentHistoryIndex > 0) {
+                currentHistoryIndex--;
+                const url = webHistory[currentHistoryIndex];
+                
+                // Show only the core domain in address bar
+                try {
+                    const urlObj = new URL(url);
+                    const displayUrl = urlObj.hostname;
+                    webAddressInput.value = displayUrl;
+                } catch (e) {
+                    webAddressInput.value = url;
+                }
+                
+                tryProxyIframe(url);
+                updateNavButtons();
+            }
+        });
+        
+        webForwardBtn.addEventListener('click', () => {
+            if (currentHistoryIndex < webHistory.length - 1) {
+                currentHistoryIndex++;
+                const url = webHistory[currentHistoryIndex];
+                
+                // Show only the core domain in address bar
+                try {
+                    const urlObj = new URL(url);
+                    const displayUrl = urlObj.hostname;
+                    webAddressInput.value = displayUrl;
+                } catch (e) {
+                    webAddressInput.value = url;
+                }
+                
+                tryProxyIframe(url);
+                updateNavButtons();
+            }
+        });
+        
+        webRefreshBtn.addEventListener('click', () => {
+            // Get the full URL from history instead of the displayed domain
+            if (currentHistoryIndex >= 0 && webHistory[currentHistoryIndex]) {
+                const fullUrl = webHistory[currentHistoryIndex];
+                tryProxyIframe(fullUrl);
+            }
+        });
+        
+        // Favorite items click (main favorites grid)
+        document.querySelectorAll('.favorite-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const url = item.dataset.url;
+                goToUrl(url);
+            });
+        });
+        
+        // Favorites bar items click
+        document.querySelectorAll('.fav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = link.dataset.url;
+                goToUrl(url);
+            });
+        });
+        
+        // Tools folder functionality
+        const toolsFolderHeader = document.getElementById('toolsFolderHeader');
+        const toolsFolderContent = document.getElementById('toolsFolderContent');
+        const toolsFolder = toolsFolderHeader.parentElement;
+        
+        toolsFolderHeader.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = toolsFolderContent.style.display !== 'none';
+            
+            if (isOpen) {
+                toolsFolderContent.style.display = 'none';
+                toolsFolder.classList.remove('open');
+            } else {
+                toolsFolderContent.style.display = 'block';
+                toolsFolder.classList.add('open');
+            }
+        });
+        
+        // Close folder when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!toolsFolder.contains(e.target)) {
+                toolsFolderContent.style.display = 'none';
+                toolsFolder.classList.remove('open');
+            }
+        });
+        
+        // Close folder when clicking on any fav-link in the dropdown
+        document.querySelectorAll('.fav-folder-content .fav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                toolsFolderContent.style.display = 'none';
+                toolsFolder.classList.remove('open');
+            });
+        });
+        
+        // Show favorites when iframe is hidden
+        function showFavorites() {
+            webFavorites.style.display = 'block';
+            webIframeContainer.style.display = 'none';
+            webAddressInput.value = '';
+        }
+        
+        // Load crucial.design by default when Web window opens
+        function loadDefaultSite() {
+            goToUrl('https://crucial.design');
+        }
+        
+        // Handle messages from error pages
+        window.addEventListener('message', function(event) {
+            if (event.data === 'openExternal') {
+                const currentUrl = webAddressInput.value;
+                if (currentUrl) {
+                    window.open(currentUrl, '_blank');
+                }
+            } else if (event.data === 'goHome') {
+                showFavorites();
+            }
+        });
+        
+        // Initialize
+        updateNavButtons();
     </script>
 </body>
 </html>
