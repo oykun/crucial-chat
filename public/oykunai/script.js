@@ -232,8 +232,9 @@ updateSendButton();
 // Intro messages
 const introMessages = [
     "Hey, it's OykunAI",
-    "I'm trained on Oykun's design service, tweets, articles, interviews, design philosophy and more...",
-    "Let's talk =)"
+    "I'm trained on Oykun's design work, philosophy, and experiments.",
+    "Ask me about his agency <a href='https://crucial.design' target='_blank'>Crucial.Design</a>, how he works with founders, or lessons from 25 years of design.",
+    "Let's talk design, AI, and building things that matter."
 ];
 
 // Load intro messages with delay

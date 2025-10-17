@@ -3,39 +3,1408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Experiments by Oykun</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Oykun OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            /* Light gray gradient wallpaper */
+            background: linear-gradient(135deg, 
+                #F5F5F5 0%,
+                #ECECEC 25%,
+                #E0E0E0 50%,
+                #ECECEC 75%,
+                #F5F5F5 100%);
+            color: #000000;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Desktop */
+        .desktop {
+            position: fixed;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 32px);
+        }
+        
+        /* Window */
+        .window {
+            position: absolute;
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1;
+            transition: z-index 0s;
+        }
+        
+        .window.active {
+            z-index: 10;
+        }
+        
+        .window.minimized {
+            display: none;
+        }
+        
+        .window-resize-handle {
+            position: absolute;
+            z-index: 10;
+        }
+        
+        .window-resize-handle.nw {
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            cursor: nw-resize;
+        }
+        
+        .window-resize-handle.ne {
+            top: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            cursor: ne-resize;
+        }
+        
+        .window-resize-handle.sw {
+            bottom: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            cursor: sw-resize;
+        }
+        
+        .window-resize-handle.se {
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            cursor: se-resize;
+        }
+        
+        .window-resize-handle.n {
+            top: 0;
+            left: 12px;
+            right: 12px;
+            height: 12px;
+            cursor: n-resize;
+        }
+        
+        .window-resize-handle.s {
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 12px;
+            cursor: s-resize;
+        }
+        
+        .window-resize-handle.w {
+            top: 12px;
+            bottom: 12px;
+            left: 0;
+            width: 12px;
+            cursor: w-resize;
+        }
+        
+        .window-resize-handle.e {
+            top: 12px;
+            bottom: 12px;
+            right: 0;
+            width: 12px;
+            cursor: e-resize;
+        }
+        
+        /* Title bar */
+        .title-bar {
+            height: 36px;
+            background: linear-gradient(180deg, #F8F8F8 0%, #F0F0F0 100%);
+            border-bottom: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            cursor: move;
+        }
+        
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid #D0D0D0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .window-btn.close {
+            background: linear-gradient(135deg, #FF5F57 0%, #FF3B30 100%);
+            border-color: #E73C2E;
+        }
+        
+        .window-btn.close:hover {
+            background: linear-gradient(135deg, #FF6B63 0%, #FF4A40 100%);
+            border-color: #FF3B30;
+        }
+        
+        .window-btn.maximize {
+            background: linear-gradient(135deg, #28CA42 0%, #1DB954 100%);
+            border-color: #1DB954;
+        }
+        
+        .window-btn.maximize:hover {
+            background: linear-gradient(135deg, #32D452 0%, #22C55E 100%);
+            border-color: #1DB954;
+        }
+        
+        .window-title {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        /* Notes content */
+        .notes-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .notes-text {
+            font-size: 12px;
+            line-height: 1.8;
+            color: #333333;
+            padding: 40px;
+            font-family: 'Roboto Mono', monospace;
+            white-space: pre-wrap;
+        }
+        
+        .notes-text a {
+            color: #FF3B30;
+            text-decoration: none;
+            border-bottom: 1px solid #FF3B30;
+            transition: opacity 0.2s ease;
+        }
+        
+        .notes-text a:hover {
+            opacity: 0.7;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #E0E0E0;
+            margin: 20px 0;
+        }
+        
+        /* Highlight */
+        .highlight {
+            color: #FF3B30;
+            font-weight: 600;
+        }
+        
+        /* Mail content */
+        .mail-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .mail-form {
+            padding: 40px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+        }
+        
+        .mail-field {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .mail-field label {
+            color: #666666;
+            font-weight: 500;
+        }
+        
+        .mail-field input,
+        .mail-field textarea {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            padding: 12px 16px;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            background: #FFFFFF;
+            color: #333333;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        
+        .mail-field input:focus,
+        .mail-field textarea:focus {
+            border-color: #FF0000;
+        }
+        
+        .mail-field input[readonly] {
+            background: #F8F8F8;
+            color: #999999;
+            cursor: not-allowed;
+        }
+        
+        .mail-field textarea {
+            resize: vertical;
+            min-height: 200px;
+            line-height: 1.6;
+        }
+        
+        .mail-body {
+            flex: 1;
+        }
+        
+        .mail-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .mail-send-btn {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            padding: 12px 32px;
+            background: #FF0000;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+        
+        .mail-send-btn:hover {
+            background: #CC0000;
+        }
+        
+        .mail-send-btn:disabled {
+            background: #CCCCCC;
+            cursor: not-allowed;
+        }
+        
+        .mail-status {
+            font-size: 12px;
+            color: #666666;
+        }
+        
+        .mail-status.success {
+            color: #00AA00;
+        }
+        
+        .mail-status.error {
+            color: #FF0000;
+        }
+        
+        /* Dragging */
+        .dragging {
+            cursor: grabbing !important;
+        }
+        
+        /* Menu bar */
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 1000;
+            border-bottom: 1px solid #E0E0E0;
+            font-size: 13px;
+        }
+        
+        .menu-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .menu-items {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .menu-item {
+            font-size: 12px;
+            font-weight: 500;
+            color: #000000;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            color: #FF3B30;
+        }
+        
+        .menu-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 120px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .menu-dropdown.show {
+            display: block;
+        }
+        
+        .menu-dropdown-item {
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #000000;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border-bottom: 1px solid #F0F0F0;
+        }
+        
+        .menu-dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-dropdown-item:hover {
+            background: #F8F8F8;
+            color: #FF3B30;
+        }
+        
+        /* Settings Window Styles */
+        .settings-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #FFFFFF;
+        }
+        
+        .settings-tabs {
+            display: flex;
+            border-bottom: 1px solid #E0E0E0;
+            background: #F8F8F8;
+        }
+        
+        .settings-tab {
+            padding: 12px 20px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666666;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .settings-tab:hover {
+            color: #333333;
+            background: #F0F0F0;
+        }
+        
+        .settings-tab.active {
+            color: #333333;
+            background: #FFFFFF;
+            border-bottom-color: #FF3B30;
+        }
+        
+        .settings-panel {
+            padding: 24px;
+        }
+        
+        .settings-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 16px;
+        }
+        
+        .settings-section p {
+            font-size: 12px;
+            color: #666666;
+            line-height: 1.5;
+        }
+        
+        .wallpaper-options {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .wallpaper-option {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        
+        .wallpaper-option:hover {
+            border-color: #E0E0E0;
+        }
+        
+        .wallpaper-option.selected {
+            border-color: #FF3B30;
+        }
+        
+        .wallpaper-preview {
+            width: 120px;
+            height: 80px;
+            border-radius: 6px;
+            border: 1px solid #E0E0E0;
+            margin-bottom: 8px;
+        }
+        
+        .gray-preview {
+            background: #F5F5F5;
+        }
+        
+        .pastel-preview {
+            background: linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 50%, #F0E5FF 100%);
+        }
+        
+        .wallpaper-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #333333;
+            text-align: center;
+        }
+        
+        .menu-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+        }
+        
+        .menu-time {
+            font-weight: 500;
+        }
+        
+        /* Widget base */
+        .widget {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .widget:hover {
+            transform: translateY(-4px);
+        }
+        
+        /* Dot matrix pattern */
+        .dot-pattern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: grid;
+            grid-template-columns: repeat(8, 8px);
+            gap: 4px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #000000;
+            border-radius: 50%;
+        }
+        
+        /* Large red widget */
+        .widget-large {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: #FF3B30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .widget-large::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .widget-icon {
+            font-size: 48px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* App widgets */
+        .widget-app {
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .widget-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .widget-desc {
+            font-size: 11px;
+            color: #666666;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .widget-action {
+            font-size: 20px;
+            text-align: right;
+        }
+        
+        /* Dark widget */
+        .widget-dark {
+            background: #1C1C1E;
+            color: #FFFFFF;
+        }
+        
+        .widget-dark .widget-desc {
+            color: #999999;
+        }
+        
+        /* Compass widget */
+        .compass {
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .compass-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #E0E0E0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .compass-dot {
+            position: absolute;
+            display: grid;
+            grid-template-columns: repeat(3, 6px);
+            gap: 3px;
+        }
+        
+        .compass-dot .dot {
+            width: 6px;
+            height: 6px;
+        }
+        
+        .compass-n { top: 10px; }
+        .compass-s { bottom: 10px; }
+        .compass-w { left: 10px; }
+        .compass-e { right: 10px; }
+        
+        .compass-label {
+            position: absolute;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .label-n { top: -20px; }
+        .label-s { bottom: -20px; }
+        .label-w { left: -20px; }
+        .label-e { right: -20px; }
+        
+        /* Status text widget */
+        .status-text {
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Time display */
+        .time-display {
+            font-size: 64px;
+            font-weight: 300;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        /* Emoji widget */
+        .emoji-widget {
+            font-size: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+        
+        /* Red accent */
+        .accent-red {
+            color: #FF3B30;
+        }
+        
+        /* WIP badge */
+        .wip-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #FF3B30;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* Dock */
+        .dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+        
+        .dock-item {
+            background: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid transparent;
+            width: 60px;
+            height: 60px;
+        }
+        
+        
+        .dock-label {
+            font-size: 10px;
+            font-weight: 500;
+            color: #333333;
+            white-space: nowrap;
+        }
+        
+        .dock-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: #FF3B30;
+        }
+        
+        .dock-item:hover .dock-label {
+            color: #FF3B30;
+        }
+        
+        .dock-item.active {
+            border-color: #FF3B30;
+        }
+        
+        .dock-item.active .dock-label {
+            color: #FF3B30;
+        }
+        
+        .dock-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #FF3B30;
+            border-radius: 50%;
+        }
+        
+        .dock-divider {
+            width: 1px;
+            height: 40px;
+            background: #E0E0E0;
+            margin: 0 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-items {
+                display: none;
+            }
+            
+            .dock {
+                bottom: 10px;
+            }
+            
+            .dock-item {
+                padding: 12px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .dock-label {
+                font-size: 9px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <p>Experimenting with AI.<br>Driven by curiosity.<br>By <a href="https://x.com/oykun" title="X / Twitter">@oykun</a></p>
-        </div>
-        
-        <div class="main-content">
-            
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <p>Chat with AI version of Oykun.<br>
-                    Trained with his articles, tweets, bio and more. <br>
-                    You can ask about design, business, creative insights...</p>
-                    <a href="oykunai/">Chat with OykunAI</a>
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+        <div class="menu-left">
+            <div class="menu-items">
+                <div class="menu-item" id="oykunOSMenu">
+                    Oykun OS
+                    <div class="menu-dropdown" id="oykunOSDropdown">
+                        <div class="menu-dropdown-item" onclick="openSettings()">Settings</div>
+                    </div>
                 </div>
-                
-                <div class="tool-card coming-soon">
-                    <p>Additional AI experiments and tools coming soon.</p>
+                <div class="menu-item" id="helpMenu">
+                    Help
+                    <div class="menu-dropdown" id="helpDropdown">
+                        <div class="menu-dropdown-item" onclick="openFAQ()">FAQ</div>
+                        <div class="menu-dropdown-item" onclick="mailToOykun()">Mail to oykun</div>
+                    </div>
                 </div>
             </div>
-            
         </div>
+        <div class="menu-right">
+            <div class="menu-time" id="menuTime">00:00</div>
+        </div>
+        </div>
+        
+    <!-- Desktop -->
+    <div class="desktop">
+        <!-- Notes Window -->
+        <div class="window active" id="notesWindow" style="top: 80px; left: 120px; width: 650px; height: 550px;">
+            <div class="title-bar" id="notesTitleBar">
+                <div class="window-controls">
+                    <div class="window-btn close" data-window="notesWindow"></div>
+                    <div class="window-btn maximize" data-window="notesWindow"></div>
+                </div>
+                <div class="window-title">Notes</div>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="notes-content">
+                <div class="notes-text">
+Welcome to Oykun's AI Lab
 
+This is my playground for exploring AI-assisted creativity, design thinking, and human-computer interaction.
 
-        <div class="footer">
-            <p>Powered by OpenAI</p>
+Each experiment here is a small attempt to make AI tools that actually feel good to use.
+
+After 25 years designing products and helping founders build better experiences, I'm now channeling that craft into AI experiments.
+
+<div class="divider"></div>
+
+Experiments
+
+💬 Chat
+Chat with an AI trained on my design philosophy, articles, and insights.
+Ask about design, business, or the creative process.
+
+⏳ More Coming Soon
+Always experimenting with new ideas.
+
+<div class="divider"></div>
+
+Connect
+
+→ Follow me on X: <a href="https://x.com/oykun" target="_blank">x.com/oykun</a>
+Design insights, AI experiments, and creative thinking.
+
+→ Need design help? <a href="https://crucial.design" target="_blank">crucial.design</a>
+Helping founders build products that convert — backed by 25 years of experience.
+                </div>
+                <div class="window-resize-handle nw" data-window="notesWindow" data-direction="nw"></div>
+                <div class="window-resize-handle ne" data-window="notesWindow" data-direction="ne"></div>
+                <div class="window-resize-handle sw" data-window="notesWindow" data-direction="sw"></div>
+                <div class="window-resize-handle se" data-window="notesWindow" data-direction="se"></div>
+                <div class="window-resize-handle n" data-window="notesWindow" data-direction="n"></div>
+                <div class="window-resize-handle s" data-window="notesWindow" data-direction="s"></div>
+                <div class="window-resize-handle w" data-window="notesWindow" data-direction="w"></div>
+                <div class="window-resize-handle e" data-window="notesWindow" data-direction="e"></div>
+            </div>
+        </div>
+        
+        <!-- Messages Window -->
+        <div class="window minimized" id="oykunaiWindow" style="top: 50px; right: 80px; left: auto; width: 420px; height: calc(100vh - 140px);">
+            <div class="title-bar" id="oykunaiTitleBar">
+                <div class="window-controls">
+                    <div class="window-btn close" data-window="oykunaiWindow"></div>
+                    <div class="window-btn maximize" data-window="oykunaiWindow"></div>
+                </div>
+                <div class="window-title">Chat</div>
+                <div style="width: 36px;"></div>
+            </div>
+            <div style="flex: 1; overflow: hidden; position: relative;">
+                <iframe src="oykunai/" style="width: 100%; height: 100%; border: none; display: block;"></iframe>
+                <div class="window-resize-handle nw" data-window="oykunaiWindow" data-direction="nw"></div>
+                <div class="window-resize-handle ne" data-window="oykunaiWindow" data-direction="ne"></div>
+                <div class="window-resize-handle sw" data-window="oykunaiWindow" data-direction="sw"></div>
+                <div class="window-resize-handle se" data-window="oykunaiWindow" data-direction="se"></div>
+                <div class="window-resize-handle n" data-window="oykunaiWindow" data-direction="n"></div>
+                <div class="window-resize-handle s" data-window="oykunaiWindow" data-direction="s"></div>
+                <div class="window-resize-handle w" data-window="oykunaiWindow" data-direction="w"></div>
+                <div class="window-resize-handle e" data-window="oykunaiWindow" data-direction="e"></div>
+            </div>
+        </div>
+        
+        <!-- Mail Window -->
+        <div class="window minimized" id="mailWindow" style="top: 100px; left: 50%; transform: translateX(-50%); width: 600px; height: 500px;">
+            <div class="title-bar" id="mailTitleBar">
+                <div class="window-controls">
+                    <div class="window-btn close" data-window="mailWindow"></div>
+                    <div class="window-btn maximize" data-window="mailWindow"></div>
+                </div>
+                <div class="window-title">Mail</div>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="mail-content">
+                <form id="mailForm" class="mail-form">
+                    <div class="mail-field">
+                        <label>To:</label>
+                        <input type="text" value="hello@oykun.com" readonly>
+                    </div>
+                    <div class="mail-field">
+                        <label>From:</label>
+                        <input type="email" id="mailFrom" placeholder="your@email.com" required>
+                    </div>
+                    <div class="mail-field">
+                        <label>Subject:</label>
+                        <input type="text" id="mailSubject" placeholder="Enter subject" required>
+                    </div>
+                    <div class="mail-field mail-body">
+                        <label>Message:</label>
+                        <textarea id="mailBody" placeholder="Write your message..." required></textarea>
+                    </div>
+                    <div class="mail-actions">
+                        <button type="submit" class="mail-send-btn">Send</button>
+                        <div id="mailStatus" class="mail-status"></div>
+                    </div>
+                </form>
+                <div class="window-resize-handle nw" data-window="mailWindow" data-direction="nw"></div>
+                <div class="window-resize-handle ne" data-window="mailWindow" data-direction="ne"></div>
+                <div class="window-resize-handle sw" data-window="mailWindow" data-direction="sw"></div>
+                <div class="window-resize-handle se" data-window="mailWindow" data-direction="se"></div>
+                <div class="window-resize-handle n" data-window="mailWindow" data-direction="n"></div>
+                <div class="window-resize-handle s" data-window="mailWindow" data-direction="s"></div>
+                <div class="window-resize-handle w" data-window="mailWindow" data-direction="w"></div>
+                <div class="window-resize-handle e" data-window="mailWindow" data-direction="e"></div>
+            </div>
+        </div>
+        
+        <!-- Settings Window -->
+        <div class="window minimized" id="settingsWindow" style="top: 80px; left: 200px; width: 500px; height: 400px;">
+            <div class="title-bar" id="settingsTitleBar">
+                <div class="window-controls">
+                    <div class="window-btn close" data-window="settingsWindow"></div>
+                    <div class="window-btn maximize" data-window="settingsWindow"></div>
+                </div>
+                <div class="window-title">Settings</div>
+                <div style="width: 36px;"></div>
+            </div>
+            <div class="settings-content">
+                <div class="settings-tabs">
+                    <div class="settings-tab active" data-tab="general">General</div>
+                    <div class="settings-tab" data-tab="themes">Themes</div>
+                </div>
+                <div class="settings-panel" id="generalPanel">
+                    <div class="settings-section">
+                        <h3>General Settings</h3>
+                        <p>General application settings will go here.</p>
+                    </div>
+                </div>
+                <div class="settings-panel" id="themesPanel" style="display: none;">
+                    <div class="settings-section">
+                        <h3>Wallpaper</h3>
+                        <div class="wallpaper-options">
+                            <div class="wallpaper-option" data-wallpaper="gray">
+                                <div class="wallpaper-preview gray-preview"></div>
+                                <div class="wallpaper-label">Gray</div>
+                            </div>
+                            <div class="wallpaper-option" data-wallpaper="pastel">
+                                <div class="wallpaper-preview pastel-preview"></div>
+                                <div class="wallpaper-label">Pastel Gradient</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="window-resize-handle nw" data-window="settingsWindow" data-direction="nw"></div>
+                <div class="window-resize-handle ne" data-window="settingsWindow" data-direction="ne"></div>
+                <div class="window-resize-handle sw" data-window="settingsWindow" data-direction="sw"></div>
+                <div class="window-resize-handle se" data-window="settingsWindow" data-direction="se"></div>
+                <div class="window-resize-handle n" data-window="settingsWindow" data-direction="n"></div>
+                <div class="window-resize-handle s" data-window="settingsWindow" data-direction="s"></div>
+                <div class="window-resize-handle w" data-window="settingsWindow" data-direction="w"></div>
+                <div class="window-resize-handle e" data-window="settingsWindow" data-direction="e"></div>
+            </div>
         </div>
     </div>
+            
+    <!-- Dock -->
+    <div class="dock">
+        <div class="dock-item active" id="notesDockIcon" data-window="notesWindow" title="Notes">
+            <div class="dock-label">Notes</div>
+        </div>
+        <div class="dock-item" id="oykunaiDockIcon" data-window="oykunaiWindow" title="Chat">
+            <div class="dock-label">Chat</div>
+        </div>
+    </div>
+    
+    <script>
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            // Convert to London time (Europe/London timezone)
+            const londonTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+            const hours = String(londonTime.getHours()).padStart(2, '0');
+            const minutes = String(londonTime.getMinutes()).padStart(2, '0');
+            const seconds = londonTime.getSeconds();
+            // Blink colon with seconds (show on even seconds, hide on odd)
+            const colon = seconds % 2 === 0 ? ':' : ' ';
+            document.getElementById('menuTime').textContent = `${hours}${colon}${minutes} London, UK`;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Help dropdown functionality
+        const helpMenu = document.getElementById('helpMenu');
+        const helpDropdown = document.getElementById('helpDropdown');
+        
+        helpMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            helpDropdown.classList.toggle('show');
+        });
+        
+        // Oykun OS dropdown functionality
+        const oykunOSMenu = document.getElementById('oykunOSMenu');
+        const oykunOSDropdown = document.getElementById('oykunOSDropdown');
+        
+        oykunOSMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            oykunOSDropdown.classList.toggle('show');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!helpMenu.contains(e.target)) {
+                helpDropdown.classList.remove('show');
+            }
+            if (!oykunOSMenu.contains(e.target)) {
+                oykunOSDropdown.classList.remove('show');
+            }
+        });
+        
+        // Help dropdown functions
+        function openFAQ() {
+            helpDropdown.classList.remove('show');
+            // For now, just show an alert - you can replace this with actual FAQ content
+            alert('FAQ content coming soon!');
+        }
+        
+        function mailToOykun() {
+            helpDropdown.classList.remove('show');
+            window.location.href = 'mailto:hello@oykun.com';
+        }
+        
+        // Settings functions
+        function openSettings() {
+            oykunOSDropdown.classList.remove('show');
+            const settingsWindow = document.getElementById('settingsWindow');
+            settingsWindow.classList.remove('minimized');
+            bringToFront(settingsWindow);
+        }
+        
+        
+        // Make all windows draggable
+        const windows = {
+            notesWindow: document.getElementById('notesWindow'),
+            oykunaiWindow: document.getElementById('oykunaiWindow'),
+            mailWindow: document.getElementById('mailWindow'),
+            settingsWindow: document.getElementById('settingsWindow')
+        };
+        
+        const titleBars = {
+            notesWindow: document.getElementById('notesTitleBar'),
+            oykunaiWindow: document.getElementById('oykunaiTitleBar'),
+            mailWindow: document.getElementById('mailTitleBar'),
+            settingsWindow: document.getElementById('settingsTitleBar')
+        };
+        
+        let dragState = {};
+        
+        // Bring window to front
+        function bringToFront(windowEl) {
+            Object.values(windows).forEach(w => w.classList.remove('active'));
+            windowEl.classList.add('active');
+        }
+        
+        Object.keys(titleBars).forEach(windowId => {
+            const titleBar = titleBars[windowId];
+            const windowEl = windows[windowId];
+            
+            dragState[windowId] = {
+                isDragging: false,
+                currentX: 0,
+                currentY: 0,
+                initialX: 0,
+                initialY: 0,
+                xOffset: 0,
+                yOffset: 0
+            };
+            
+            // Bring to front on any click on the window
+            windowEl.addEventListener('mousedown', () => {
+                bringToFront(windowEl);
+            });
+            
+            titleBar.addEventListener('mousedown', (e) => {
+                if (e.target.classList.contains('window-btn')) return;
+                const state = dragState[windowId];
+                const rect = windowEl.getBoundingClientRect();
+                state.initialX = e.clientX - rect.left;
+                state.initialY = e.clientY - rect.top;
+                state.isDragging = true;
+                windowEl.classList.add('dragging');
+            });
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            Object.keys(windows).forEach(windowId => {
+                const state = dragState[windowId];
+                const windowEl = windows[windowId];
+                
+                if (state.isDragging) {
+                    e.preventDefault();
+                    
+                    // Calculate new position
+                    let newX = e.clientX - state.initialX;
+                    let newY = e.clientY - state.initialY;
+                    
+                    // Get window dimensions
+                    const rect = windowEl.getBoundingClientRect();
+                    const windowWidth = rect.width;
+                    const windowHeight = rect.height;
+                    
+                    // Get viewport dimensions
+                    const viewportWidth = window.innerWidth;
+                    const viewportHeight = window.innerHeight;
+                    
+                    // Apply boundary constraints
+                    newX = Math.max(0, Math.min(newX, viewportWidth - windowWidth));
+                    newY = Math.max(0, Math.min(newY, viewportHeight - windowHeight));
+                    
+                    // Update position
+                    windowEl.style.left = newX + 'px';
+                    windowEl.style.top = newY + 'px';
+                    windowEl.style.transform = 'none';
+                }
+            });
+        });
+        
+        document.addEventListener('mouseup', () => {
+            Object.keys(windows).forEach(windowId => {
+                dragState[windowId].isDragging = false;
+                windows[windowId].classList.remove('dragging');
+            });
+        });
+        
+        // Window controls (close, minimize, maximize)
+        const windowStates = {};
+        
+        document.querySelectorAll('.window-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const windowId = btn.dataset.window;
+                const windowEl = document.getElementById(windowId);
+                
+                if (btn.classList.contains('close')) {
+                    windowEl.classList.add('minimized');
+                    // Remove active state from dock when window is closed
+                    const dockItem = document.querySelector(`.dock-item[data-window="${windowId}"]`);
+                    console.log('Close button clicked for:', windowId, 'Found dock item:', dockItem);
+                    if (dockItem) {
+                        dockItem.classList.remove('active');
+                        console.log('Removed active class from dock item');
+                    }
+                } else if (btn.classList.contains('minimize')) {
+                    windowEl.classList.add('minimized');
+                    // Remove active state from dock when window is minimized
+                    const dockItem = document.querySelector(`.dock-item[data-window="${windowId}"]`);
+                    if (dockItem) {
+                        dockItem.classList.remove('active');
+                    }
+                } else if (btn.classList.contains('maximize')) {
+                    if (!windowStates[windowId]) {
+                        windowStates[windowId] = {
+                            isMaximized: false,
+                            beforeMaximize: {}
+                        };
+                    }
+                    
+                    if (!windowStates[windowId].isMaximized) {
+                        windowStates[windowId].beforeMaximize = {
+                            width: windowEl.style.width || getComputedStyle(windowEl).width,
+                            height: windowEl.style.height || getComputedStyle(windowEl).height,
+                            top: windowEl.style.top || getComputedStyle(windowEl).top,
+                            left: windowEl.style.left || getComputedStyle(windowEl).left
+                        };
+                        windowEl.style.width = 'calc(100vw - 40px)';
+                        windowEl.style.height = 'calc(100vh - 120px)';
+                        windowEl.style.top = '40px';
+                        windowEl.style.left = '50%';
+                        windowEl.style.transform = 'translateX(-50%)';
+                        windowStates[windowId].isMaximized = true;
+                    } else {
+                        const before = windowStates[windowId].beforeMaximize;
+                        windowEl.style.width = before.width;
+                        windowEl.style.height = before.height;
+                        windowEl.style.top = before.top;
+                        windowEl.style.left = before.left;
+                        windowEl.style.transform = 'translateX(-50%)';
+                        windowStates[windowId].isMaximized = false;
+                    }
+                }
+            });
+        });
+        
+        // Dock icons
+        document.querySelectorAll('.dock-item[data-window]').forEach(icon => {
+            icon.addEventListener('click', () => {
+                const windowId = icon.dataset.window;
+                const windowEl = document.getElementById(windowId);
+                
+                if (windowEl.classList.contains('minimized')) {
+                    windowEl.classList.remove('minimized');
+                    bringToFront(windowEl);
+                    document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active'));
+                    icon.classList.add('active');
+                } else {
+                    windowEl.classList.add('minimized');
+                    icon.classList.remove('active');
+                }
+            });
+        });
+        
+        // Resizing
+        let isResizing = false;
+        let resizingWindow = null;
+        let resizeDirection = null;
+        let startX = 0;
+        let startY = 0;
+        let startWidth = 0;
+        let startHeight = 0;
+        let startLeft = 0;
+        let startTop = 0;
+        
+        document.querySelectorAll('.window-resize-handle').forEach(handle => {
+            handle.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                const windowId = handle.dataset.window;
+                const direction = handle.dataset.direction;
+                resizingWindow = document.getElementById(windowId);
+                resizeDirection = direction;
+                
+                const rect = resizingWindow.getBoundingClientRect();
+                startX = e.clientX;
+                startY = e.clientY;
+                startWidth = rect.width;
+                startHeight = rect.height;
+                startLeft = rect.left;
+                startTop = rect.top;
+                
+                e.stopPropagation();
+            });
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (isResizing && resizingWindow && resizeDirection) {
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                let newWidth = startWidth;
+                let newHeight = startHeight;
+                let newLeft = startLeft;
+                let newTop = startTop;
+                
+                // Calculate new dimensions based on resize direction
+                if (resizeDirection.includes('e')) { // east (right)
+                    newWidth = startWidth + deltaX;
+                }
+                if (resizeDirection.includes('w')) { // west (left)
+                    newWidth = startWidth - deltaX;
+                    newLeft = startLeft + deltaX;
+                }
+                if (resizeDirection.includes('s')) { // south (bottom)
+                    newHeight = startHeight + deltaY;
+                }
+                if (resizeDirection.includes('n')) { // north (top)
+                    newHeight = startHeight - deltaY;
+                    newTop = startTop + deltaY;
+                }
+                
+                // Apply minimum size constraints
+                if (newWidth > 300) {
+                    resizingWindow.style.width = newWidth + 'px';
+                    if (resizeDirection.includes('w')) {
+                        resizingWindow.style.left = newLeft + 'px';
+                    }
+                }
+                if (newHeight > 200) {
+                    resizingWindow.style.height = newHeight + 'px';
+                    if (resizeDirection.includes('n')) {
+                        resizingWindow.style.top = newTop + 'px';
+                    }
+                }
+            }
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            resizingWindow = null;
+            resizeDirection = null;
+        });
+        
+        // Mail form submission
+        document.getElementById('mailForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('.mail-send-btn');
+            const statusDiv = document.getElementById('mailStatus');
+            const from = document.getElementById('mailFrom').value;
+            const subject = document.getElementById('mailSubject').value;
+            const body = document.getElementById('mailBody').value;
+            
+            // Disable button and show sending status
+            submitBtn.disabled = true;
+            statusDiv.textContent = 'Sending...';
+            statusDiv.className = 'mail-status';
+            
+            try {
+                const response = await fetch('/api/send-mail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        from,
+                        to: 'hello@oykun.com',
+                        subject,
+                        body
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.textContent = '✓ Message sent!';
+                    statusDiv.className = 'mail-status success';
+                    // Clear form
+                    document.getElementById('mailFrom').value = '';
+                    document.getElementById('mailSubject').value = '';
+                    document.getElementById('mailBody').value = '';
+                } else {
+                    throw new Error(data.error || 'Failed to send');
+                }
+            } catch (error) {
+                statusDiv.textContent = '✗ Failed to send. Please try again.';
+                statusDiv.className = 'mail-status error';
+            } finally {
+                submitBtn.disabled = false;
+                // Clear status after 5 seconds
+                setTimeout(() => {
+                    statusDiv.textContent = '';
+                    statusDiv.className = 'mail-status';
+                }, 5000);
+            }
+        });
+        
+        // Settings window functionality
+        // Tab switching
+        document.querySelectorAll('.settings-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all panels
+                document.querySelectorAll('.settings-panel').forEach(panel => {
+                    panel.style.display = 'none';
+                });
+                
+                // Show selected panel
+                const tabName = tab.dataset.tab;
+                document.getElementById(tabName + 'Panel').style.display = 'block';
+            });
+        });
+        
+        // Wallpaper selection
+        document.querySelectorAll('.wallpaper-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                document.querySelectorAll('.wallpaper-option').forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Change background based on selection
+                const wallpaper = option.dataset.wallpaper;
+                if (wallpaper === 'gray') {
+                    document.body.style.background = 'linear-gradient(135deg, #F5F5F5 0%, #ECECEC 25%, #E0E0E0 50%, #ECECEC 75%, #F5F5F5 100%)';
+                } else if (wallpaper === 'pastel') {
+                    document.body.style.background = 'linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 50%, #F0E5FF 100%)';
+                }
+            });
+        });
+        
+        // Set default wallpaper selection
+        document.querySelector('.wallpaper-option[data-wallpaper="gray"]').classList.add('selected');
+    </script>
 </body>
 </html>
