@@ -14,13 +14,9 @@
         
         body {
             font-family: 'Roboto Mono', monospace;
-            /* Light gray gradient wallpaper */
-            background: linear-gradient(135deg, 
-                #F5F5F5 0%,
-                #ECECEC 25%,
-                #E0E0E0 50%,
-                #ECECEC 75%,
-                #F5F5F5 100%);
+            /* Custom wallpaper image */
+            background: url('assets/wallpapers/wallpaper.png') no-repeat center center fixed;
+            background-size: cover;
             color: #000000;
             min-height: 100vh;
             overflow: hidden;
@@ -33,20 +29,65 @@
             left: 0;
             width: 100%;
             height: calc(100% - 32px);
+            cursor: default;
+        }
+        
+        /* Context Menu */
+        .context-menu {
+            position: fixed;
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 4px 0;
+            min-width: 160px;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .context-menu-item {
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #333333;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .context-menu-item:hover {
+            background: #F8F8F8;
+            color: #FF3B30;
+        }
+        
+        .context-menu-item.disabled {
+            color: #999999;
+            cursor: not-allowed;
+        }
+        
+        .context-menu-item.disabled:hover {
+            background: transparent;
+            color: #999999;
+        }
+        
+        .context-menu-separator {
+            height: 1px;
+            background: #E0E0E0;
+            margin: 4px 0;
         }
         
         /* Window */
         .window {
             position: absolute;
-            background: #FFFFFF;
-            border-radius: 20px;
-            border: 1px solid #E0E0E0;
+            background: transparent;
+            border-radius: 32px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             z-index: 1;
             transition: z-index 0s;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         
         .window.active {
@@ -129,8 +170,10 @@
         /* Title bar */
         .title-bar {
             height: 36px;
-            background: linear-gradient(180deg, #F8F8F8 0%, #F0F0F0 100%);
-            border-bottom: 1px solid #E0E0E0;
+            background: rgba(248, 248, 248, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(224, 224, 224, 0.4);
             display: flex;
             align-items: center;
             padding: 0 16px;
@@ -184,6 +227,8 @@
             flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
+            background: #FFFFFF;
+            border-radius: 0 0 24px 24px;
         }
         
         .notes-text {
@@ -223,6 +268,8 @@
             overflow-y: auto;
             overflow-x: hidden;
             position: relative;
+            background: #FFFFFF;
+            border-radius: 0 0 24px 24px;
         }
         
         .mail-form {
@@ -330,14 +377,14 @@
             left: 0;
             right: 0;
             height: 32px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 16px;
             z-index: 1000;
-            border-bottom: 1px solid #E0E0E0;
+            border-bottom: 1px solid rgba(224, 224, 224, 0.5);
             font-size: 13px;
         }
         
@@ -406,6 +453,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             background: #FFFFFF;
+            border-radius: 0 0 24px 24px;
         }
         
         .settings-tabs {
@@ -482,6 +530,15 @@
             margin-bottom: 8px;
         }
         
+        .vibrant-preview {
+            background: url('assets/wallpapers/wallpaper.png') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .black-preview {
+            background: #000000;
+        }
+        
         .gray-preview {
             background: #F5F5F5;
         }
@@ -503,6 +560,7 @@
             display: flex;
             flex-direction: column;
             background: #FFFFFF;
+            border-radius: 0 0 24px 24px;
         }
         
         .web-toolbar {
@@ -758,6 +816,172 @@
             width: 100%;
         }
         
+        /* Music Player Styles */
+        .music-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 0 0 24px 24px;
+        }
+        
+        .music-player {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: #FFFFFF;
+        }
+        
+        .video-section {
+            flex: 1;
+            position: relative;
+            background: #000000;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 12px;
+            font-size: 11px;
+        }
+        
+        .video-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .video-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .video-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            padding: 2px 6px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: all 0.2s ease;
+        }
+        
+        .video-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .video-filename {
+            color: #ccc;
+            font-size: 10px;
+        }
+        
+        .video-dimensions {
+            color: #999;
+            margin-left: auto;
+            font-size: 10px;
+        }
+        
+        .music-controls {
+            background: #FFFFFF;
+            border-top: 1px solid #E0E0E0;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .track-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            min-width: 70px;
+        }
+        
+        .track-title {
+            font-weight: 600;
+            font-size: 11px;
+            color: #333;
+        }
+        
+        .track-artist {
+            font-size: 9px;
+            color: #666;
+        }
+        
+        
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+        
+        .control-btn {
+            background: #F8F8F8;
+            border: 1px solid #E0E0E0;
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: #333;
+        }
+        
+        .control-btn:hover {
+            background: #F0F0F0;
+            border-color: #D0D0D0;
+        }
+        
+        .control-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .play-btn {
+            background: #FF3B30;
+            border-color: #FF3B30;
+            color: white;
+        }
+        
+        .play-btn:hover {
+            background: #E0342A;
+            border-color: #E0342A;
+        }
+        
+        .pause-btn {
+            background: #F8F8F8;
+            border-color: #E0E0E0;
+            color: #333;
+        }
+        
+        .prev-btn, .next-btn {
+            background: #F8F8F8;
+            border-color: #E0E0E0;
+            color: #333;
+        }
+        
+        
+        
         .menu-right {
             display: flex;
             align-items: center;
@@ -929,7 +1153,7 @@
         
         /* Time display */
         .time-display {
-            font-size: 64px;
+            font-size: 12px;
             font-weight: 300;
             text-align: center;
             padding: 40px 0;
@@ -1069,13 +1293,23 @@
                 </div>
             </div>
         </div>
-        <div class="menu-right">
-            <div class="menu-time" id="menuTime">00:00</div>
-        </div>
+            <div class="menu-right">
+                <div class="menu-time" id="menuTime">00:00</div>
+            </div>
         </div>
         
     <!-- Desktop -->
-    <div class="desktop">
+    <div class="desktop" id="desktop">
+        <!-- Context Menu -->
+        <div class="context-menu" id="contextMenu">
+            <div class="context-menu-item" id="aboutContextItem">
+                About Oykun OS
+            </div>
+            <div class="context-menu-separator"></div>
+            <div class="context-menu-item" id="wallpaperContextItem">
+                Change Wallpaper
+            </div>
+        </div>
         
         <!-- Messages Window -->
         <div class="window minimized" id="oykunaiWindow" style="top: 50px; right: 80px; left: auto; width: 420px; height: calc(100vh - 140px);">
@@ -1223,10 +1457,6 @@ Always experimenting with new ideas.
                         <img src="https://www.google.com/s2/favicons?domain=crucial.design&sz=16" alt="Crucial.Design" class="fav-icon">
                         <span>Crucial.Design</span>
                     </a>
-                    <a href="#" class="fav-link" data-url="https://x.com/oykun">
-                        <img src="https://www.google.com/s2/favicons?domain=x.com&sz=16" alt="X" class="fav-icon">
-                        <span>X</span>
-                    </a>
                     <div class="fav-folder">
                         <a href="#" class="fav-folder-header" id="toolsFolderHeader">
                             <span>Tools</span>
@@ -1327,7 +1557,7 @@ Always experimenting with new ideas.
         </div>
         
         <!-- Settings Window -->
-        <div class="window minimized" id="settingsWindow" style="top: 80px; left: 200px; width: 500px; height: 400px;">
+        <div class="window minimized" id="settingsWindow" style="top: 80px; left: 200px; width: 700px; height: 400px;">
             <div class="title-bar" id="settingsTitleBar">
                 <div class="window-controls">
                     <div class="window-btn close" data-window="settingsWindow"></div>
@@ -1338,19 +1568,20 @@ Always experimenting with new ideas.
             </div>
             <div class="settings-content">
                 <div class="settings-tabs">
-                    <div class="settings-tab active" data-tab="general">General</div>
-                    <div class="settings-tab" data-tab="themes">Themes</div>
+                    <div class="settings-tab active" data-tab="themes">Themes</div>
                 </div>
-                <div class="settings-panel" id="generalPanel">
-                    <div class="settings-section">
-                        <h3>General Settings</h3>
-                        <p>General application settings will go here.</p>
-                    </div>
-                </div>
-                <div class="settings-panel" id="themesPanel" style="display: none;">
+                <div class="settings-panel" id="themesPanel">
                     <div class="settings-section">
                         <h3>Wallpaper</h3>
                         <div class="wallpaper-options">
+                            <div class="wallpaper-option" data-wallpaper="vibrant">
+                                <div class="wallpaper-preview vibrant-preview"></div>
+                                <div class="wallpaper-label">Vibrant Abstract</div>
+                            </div>
+                            <div class="wallpaper-option" data-wallpaper="black">
+                                <div class="wallpaper-preview black-preview"></div>
+                                <div class="wallpaper-label">Black</div>
+                            </div>
                             <div class="wallpaper-option" data-wallpaper="gray">
                                 <div class="wallpaper-preview gray-preview"></div>
                                 <div class="wallpaper-label">Gray</div>
@@ -1373,11 +1604,55 @@ Always experimenting with new ideas.
             </div>
         </div>
     </div>
+    
+    <!-- Music Window -->
+    <div class="window minimized" id="musicWindow" style="top: 80px; left: 200px; width: 600px; height: 500px;">
+        <div class="title-bar" id="musicTitleBar">
+            <div class="window-controls">
+                <div class="window-btn close" data-window="musicWindow"></div>
+                <div class="window-btn maximize" data-window="musicWindow"></div>
+            </div>
+            <div class="window-title">Music</div>
+            <div style="width: 36px;"></div>
+        </div>
+        <div class="music-content">
+            <div class="music-player">
+                <div class="video-section">
+                    <div class="video-container">
+                        <iframe id="musicVideo" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="music-controls">
+                    <div class="track-info">
+                        <div class="track-title" id="currentTrackTitle">Loading...</div>
+                        <div class="track-artist" id="currentTrackArtist">Loading...</div>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-btn play-btn" id="playBtn">▶</button>
+                        <button class="control-btn pause-btn" id="pauseBtn">⏸</button>
+                        <button class="control-btn prev-btn" id="prevBtn">⏮</button>
+                        <button class="control-btn next-btn" id="nextBtn">⏭</button>
+                    </div>
+                </div>
+            </div>
+            <div class="window-resize-handle nw" data-window="musicWindow" data-direction="nw"></div>
+            <div class="window-resize-handle ne" data-window="musicWindow" data-direction="ne"></div>
+            <div class="window-resize-handle sw" data-window="musicWindow" data-direction="sw"></div>
+            <div class="window-resize-handle se" data-window="musicWindow" data-direction="se"></div>
+            <div class="window-resize-handle n" data-window="musicWindow" data-direction="n"></div>
+            <div class="window-resize-handle s" data-window="musicWindow" data-direction="s"></div>
+            <div class="window-resize-handle w" data-window="musicWindow" data-direction="w"></div>
+            <div class="window-resize-handle e" data-window="musicWindow" data-direction="e"></div>
+        </div>
+    </div>
             
     <!-- Dock -->
     <div class="dock">
         <div class="dock-item" id="webDockIcon" data-window="webWindow" title="Web">
             <div class="dock-label">Web</div>
+        </div>
+        <div class="dock-item" id="musicDockIcon" data-window="musicWindow" title="Music">
+            <div class="dock-label">Music</div>
         </div>
         <div class="dock-item" id="oykunaiDockIcon" data-window="oykunaiWindow" title="Chat">
             <div class="dock-label">Chat</div>
@@ -1440,6 +1715,7 @@ Always experimenting with new ideas.
             mailWindow: document.getElementById('mailWindow'),
             aboutWindow: document.getElementById('aboutWindow'),
             webWindow: document.getElementById('webWindow'),
+            musicWindow: document.getElementById('musicWindow'),
             settingsWindow: document.getElementById('settingsWindow')
         };
         
@@ -1448,6 +1724,7 @@ Always experimenting with new ideas.
             mailWindow: document.getElementById('mailTitleBar'),
             aboutWindow: document.getElementById('aboutTitleBar'),
             webWindow: document.getElementById('webTitleBar'),
+            musicWindow: document.getElementById('musicTitleBar'),
             settingsWindow: document.getElementById('settingsTitleBar')
         };
         
@@ -1602,6 +1879,11 @@ Always experimenting with new ideas.
                     // Load default site for Web window
                     if (windowId === 'webWindow') {
                         loadDefaultSite();
+                    }
+                    
+                    // Initialize music app for Music window
+                    if (windowId === 'musicWindow') {
+                        initMusicApp();
                     }
                 } else {
                     windowEl.classList.add('minimized');
@@ -1773,16 +2055,46 @@ Always experimenting with new ideas.
                 
                 // Change background based on selection
                 const wallpaper = option.dataset.wallpaper;
-                if (wallpaper === 'gray') {
-                    document.body.style.background = 'linear-gradient(135deg, #F5F5F5 0%, #ECECEC 25%, #E0E0E0 50%, #ECECEC 75%, #F5F5F5 100%)';
-                } else if (wallpaper === 'pastel') {
-                    document.body.style.background = 'linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 50%, #F0E5FF 100%)';
-                }
+                applyWallpaper(wallpaper);
+                saveWallpaperSelection(wallpaper);
             });
         });
         
-        // Set default wallpaper selection
-        document.querySelector('.wallpaper-option[data-wallpaper="gray"]').classList.add('selected');
+        // Wallpaper persistence functions
+        function saveWallpaperSelection(wallpaper) {
+            localStorage.setItem('oykunOS-wallpaper', wallpaper);
+        }
+        
+        function loadWallpaperSelection() {
+            return localStorage.getItem('oykunOS-wallpaper') || 'vibrant';
+        }
+        
+        function applyWallpaper(wallpaper) {
+            if (wallpaper === 'vibrant') {
+                document.body.style.background = "url('assets/wallpapers/wallpaper.png') no-repeat center center fixed";
+                document.body.style.backgroundSize = 'cover';
+            } else if (wallpaper === 'black') {
+                document.body.style.background = '#000000';
+                document.body.style.backgroundSize = '';
+            } else if (wallpaper === 'gray') {
+                document.body.style.background = 'linear-gradient(135deg, #F5F5F5 0%, #ECECEC 25%, #E0E0E0 50%, #ECECEC 75%, #F5F5F5 100%)';
+                document.body.style.backgroundSize = '';
+            } else if (wallpaper === 'pastel') {
+                document.body.style.background = 'linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 50%, #F0E5FF 100%)';
+                document.body.style.backgroundSize = '';
+            }
+        }
+        
+        // Load saved wallpaper on page load
+        const savedWallpaper = loadWallpaperSelection();
+        applyWallpaper(savedWallpaper);
+        
+        // Set saved wallpaper selection as active
+        document.querySelectorAll('.wallpaper-option').forEach(opt => opt.classList.remove('selected'));
+        const savedOption = document.querySelector(`.wallpaper-option[data-wallpaper="${savedWallpaper}"]`);
+        if (savedOption) {
+            savedOption.classList.add('selected');
+        }
         
         // Web window functionality
         const webAddressInput = document.getElementById('webAddressInput');
@@ -2105,8 +2417,336 @@ Always experimenting with new ideas.
             }
         });
         
+    // Music Player functionality
+    const musicVideo = document.getElementById('musicVideo');
+    const currentVideoTitle = document.getElementById('currentVideoTitle');
+    const currentTrackTitle = document.getElementById('currentTrackTitle');
+    const currentTrackArtist = document.getElementById('currentTrackArtist');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressFill = document.getElementById('progressFill');
+    const timeDisplay = document.getElementById('timeDisplay');
+    
+    // Music playlist
+    const playlist = [
+        {
+            id: 'z_6EJDeZzWM',
+            title: 'Grateful',
+            artist: 'Mark Eliyahu',
+            url: 'https://www.youtube.com/embed/z_6EJDeZzWM?enablejsapi=1&controls=0&showinfo=0&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0'
+        },
+        {
+            id: 'G5y6LCmuWag',
+            title: 'Music Video 2', 
+            artist: 'Unknown Artist',
+            url: 'https://www.youtube.com/embed/G5y6LCmuWag?enablejsapi=1&controls=0&showinfo=0&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0'
+        }
+    ];
+    
+    let currentTrackIndex = 0;
+    let isPlaying = false;
+    let currentTime = 0;
+    let duration = 0;
+    let player = null;
+    
+    // Initialize music player
+    function initMusicPlayer() {
+        // Set initial display first
+        updateDisplay();
+        
+        // Load track immediately without delay
+        loadTrackSimple();
+    }
+    
+    // Setup YouTube API
+    function setupYouTubeAPI() {
+        // Load YouTube API if not already loaded
+        if (!window.YT) {
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        
+        // Wait for API to load
+        window.onYouTubeIframeAPIReady = function() {
+            createPlayer();
+        };
+        
+        // Fallback: if API doesn't load, use simple iframe
+        setTimeout(() => {
+            if (!window.YT) {
+                loadTrackSimple();
+            }
+        }, 3000);
+    }
+    
+    // Create YouTube player
+    function createPlayer() {
+        if (player) {
+            player.destroy();
+        }
+        
+        const track = playlist[currentTrackIndex];
+        player = new YT.Player('musicVideo', {
+            videoId: track.id,
+            playerVars: {
+                controls: 0,
+                showinfo: 0,
+                rel: 0,
+                modestbranding: 1,
+                autoplay: 1,
+                disablekb: 1,
+                fs: 0,
+                iv_load_policy: 3,
+                cc_load_policy: 0,
+                playsinline: 1
+            },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange
+            }
+        });
+    }
+    
+    // Simple iframe loading
+    function loadTrackSimple() {
+        const track = playlist[currentTrackIndex];
+        
+        // Update display first
+        updateDisplay();
+        
+        // Create a simple YouTube embed URL with autoplay
+        const videoUrl = `https://www.youtube.com/embed/${track.id}?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0`;
+        
+        // Load video directly
+        musicVideo.src = videoUrl;
+        
+        // Set playing state
+        isPlaying = true;
+        playBtn.style.display = 'none';
+        pauseBtn.style.display = 'inline-block';
+        
+        console.log('Loading track:', track.title, 'by', track.artist);
+        console.log('Video URL:', videoUrl);
+    }
+    
+    // Player ready callback
+    function onPlayerReady(event) {
+        duration = player.getDuration();
+        updateProgress();
+        startProgressUpdate();
+        
+        // Fetch video metadata
+        fetchVideoMetadata();
+    }
+    
+    // Fetch YouTube video metadata
+    async function fetchVideoMetadata() {
+        const track = playlist[currentTrackIndex];
+        try {
+            // Use YouTube oEmbed API to get video metadata
+            const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${track.id}&format=json`);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch metadata');
+            }
+            
+            const data = await response.json();
+            
+            // Extract title and try to parse artist
+            const fullTitle = data.title;
+            let title = fullTitle;
+            let artist = 'Unknown Artist';
+            
+            // Try to parse "Artist - Song" format
+            if (fullTitle.includes(' - ')) {
+                const parts = fullTitle.split(' - ');
+                if (parts.length >= 2) {
+                    artist = parts[0].trim();
+                    title = parts.slice(1).join(' - ').trim();
+                }
+            }
+            
+            // Update the playlist with real metadata
+            playlist[currentTrackIndex].title = title;
+            playlist[currentTrackIndex].artist = artist;
+            
+            // Update the display
+            updateDisplay();
+            
+            console.log('Metadata updated:', title, 'by', artist);
+            
+        } catch (error) {
+            console.log('Could not fetch metadata, using default values:', error.message);
+            // Keep using the default values from playlist
+        }
+    }
+    
+    // Player state change callback
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+            isPlaying = true;
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-block';
+        } else if (event.data === YT.PlayerState.PAUSED) {
+            isPlaying = false;
+            playBtn.style.display = 'inline-block';
+            pauseBtn.style.display = 'none';
+        } else if (event.data === YT.PlayerState.ENDED) {
+            nextTrack();
+        }
+    }
+    
+    // Load a track
+    function loadTrack(index) {
+        if (index >= 0 && index < playlist.length) {
+            currentTrackIndex = index;
+            
+            // Load new video using simple approach
+            loadTrackSimple();
+        }
+    }
+    
+    // Play/Pause functionality
+    function playMusic() {
+        // For simple iframe mode, we can't control YouTube directly
+        // But we can update the UI state
+        isPlaying = true;
+        playBtn.style.display = 'none';
+        pauseBtn.style.display = 'inline-block';
+        
+        // Reload with autoplay
+        const track = playlist[currentTrackIndex];
+        const videoUrl = `https://www.youtube.com/embed/${track.id}?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0`;
+        musicVideo.src = videoUrl;
+    }
+    
+    function pauseMusic() {
+        // For simple iframe mode, we can't control YouTube directly
+        // But we can update the UI state
+        isPlaying = false;
+        playBtn.style.display = 'inline-block';
+        pauseBtn.style.display = 'none';
+        
+        // Reload without autoplay
+        const track = playlist[currentTrackIndex];
+        const videoUrl = `https://www.youtube.com/embed/${track.id}?autoplay=0&controls=0&showinfo=0&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0`;
+        musicVideo.src = videoUrl;
+    }
+    
+    // Navigation
+    function nextTrack() {
+        const nextIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(nextIndex);
+    }
+    
+    function prevTrack() {
+        const prevIndex = currentTrackIndex === 0 ? playlist.length - 1 : currentTrackIndex - 1;
+        loadTrack(prevIndex);
+    }
+    
+    // Update display
+    function updateDisplay() {
+        const track = playlist[currentTrackIndex];
+        if (currentTrackTitle) currentTrackTitle.textContent = track.title;
+        if (currentTrackArtist) currentTrackArtist.textContent = track.artist;
+        console.log('Updated display:', track.title, 'by', track.artist);
+    }
+    
+    
+    // Event listeners
+    playBtn.addEventListener('click', playMusic);
+    pauseBtn.addEventListener('click', pauseMusic);
+    nextBtn.addEventListener('click', nextTrack);
+    prevBtn.addEventListener('click', prevTrack);
+    
+    
+    // Initialize music player when window opens
+    function initMusicApp() {
+        try {
+            initMusicPlayer();
+        } catch (error) {
+            console.error('Music app initialization failed:', error);
+            // Fallback: just update display
+            updateDisplay();
+        }
+    }
+    
+        // System volume control
+        
         // Initialize
         updateNavButtons();
+        
+        // Context Menu functionality
+        const desktop = document.getElementById('desktop');
+        const contextMenu = document.getElementById('contextMenu');
+        const aboutContextItem = document.getElementById('aboutContextItem');
+        const wallpaperContextItem = document.getElementById('wallpaperContextItem');
+        
+        // Show context menu on right-click
+        desktop.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            
+            // Don't show context menu if right-clicking on a window
+            if (e.target.closest('.window')) {
+                return;
+            }
+            
+            // Position the context menu
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Ensure menu stays within viewport
+            const menuWidth = 160;
+            const menuHeight = 80;
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            let menuX = x;
+            let menuY = y;
+            
+            if (x + menuWidth > viewportWidth) {
+                menuX = x - menuWidth;
+            }
+            
+            if (y + menuHeight > viewportHeight) {
+                menuY = y - menuHeight;
+            }
+            
+            contextMenu.style.left = menuX + 'px';
+            contextMenu.style.top = menuY + 'px';
+            contextMenu.style.display = 'block';
+        });
+        
+        // Hide context menu on left-click
+        document.addEventListener('click', (e) => {
+            if (!contextMenu.contains(e.target)) {
+                contextMenu.style.display = 'none';
+            }
+        });
+        
+        // Hide context menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                contextMenu.style.display = 'none';
+            }
+        });
+        
+        // Context menu item actions
+        aboutContextItem.addEventListener('click', () => {
+            contextMenu.style.display = 'none';
+            openAbout();
+        });
+        
+        wallpaperContextItem.addEventListener('click', () => {
+            contextMenu.style.display = 'none';
+            openSettings();
+            // Switch to themes tab
+            document.querySelector('.settings-tab[data-tab="themes"]').click();
+        });
     </script>
 </body>
 </html>
